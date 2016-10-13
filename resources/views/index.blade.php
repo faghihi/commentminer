@@ -33,11 +33,11 @@
 </div>
 
 <!-- main wrapper -->
-<div class="main-wrapper"> 
+<div class="main-wrapper">
 	<!--[if lt IE 7]>
-				<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-			<![endif]-->
-			
+	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
 	<!-- top navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -64,10 +64,10 @@
 					<!--<li><a href="#subscribe">Subscribe</a></li>-->
 				</ul>
 			</div>
-			<!--/.navbar-collapse --> 
+			<!--/.navbar-collapse -->
 		</div>
 	</nav>
-	
+
 	<!-- main banner (slider area) -->
 	<section class="home animated-bg" id="home"> <a href="#home" title="کامنت ماینر - مدیریت نظرات" class="logo-lg wow zoomIn" data-wow-delay="0.5s"><img src="img/logos/logo%20(1).png" height="44" alt="کامنت ماینر"></a>
 		<h1 class="tlt">
@@ -77,8 +77,8 @@
 		</h1>
 		<p class="strong">کاربرانتان چه می&zwnj;گویند؟</p>
 		<div class="cta-wrap">
-			<div class="try-it-wrap wow fadeInLeft" data-wow-delay="3s"><a class="btn btn-primary btn-xl" title="امتحان کن!"><i class="fa fa-angle-double-right"></i> امتحان کنید! </a> </div>
-			<div class="watch-wrap wow fadeInRight" data-wow-delay="3s"> <a class="btn btn-link btn-xl lightbox"  href="#description" title="This is a sample video title."><i class="fa fa-angle-down"></i> بیشتر آشنا شوید!</a> </div>
+			<div class="try-it-wrap wow fadeInLeft" data-wow-delay="3s"><a href="http://api.commentminer.ir" class="btn btn-primary btn-xl" title="امتحان کن!"><i class="fa fa-angle-double-right"></i> امتحان کنید! </a> </div>
+			<div class="watch-wrap wow fadeInRight" data-wow-delay="3s"> <a class="btn btn-link btn-xl lightbox"  href="#description" title="آشنا شو!"><i class="fa fa-angle-down"></i> بیشتر آشنا شوید!</a> </div>
 		</div>
 		<div class="container img-slides">
 			<img src="img/thumbs/slide-img-2.jpg" class="left-img wow fadeInUp" data-wow-delay="2.2s" id="slideLeft" width="770" height="400" alt="Put you own image title here">
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- client logos -->
 	<!--<section class="clients">
 	<div class="container">
@@ -104,72 +104,72 @@
 	</div>
 	</section>
 -->
-    <!-- description section (tabs) -->
-    <section class="block white-bg features" id="description">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>کامنت‌ماینر چیست؟</h2>
-                    <p class="lead" align="justify">کامنت‌ماینر مجموعه‌ای از راهکارهای هوشمند مدیریت و سنجش محتوای نظرات کابران قابل استفاده برای استفاده انواع وبسایت‌ها، شبکه‌‌های اجتماعی و انجمن‌های گفتگو، سیستم‌های وبلاگ‌نویسی، نرم‌افزار‌های موبایل و ... است.</p>
-                    <br><br>
-                    <h3>کامنت‌ماینر برای چه کسانی مناسب است؟</h3>
-                    <br>
-                    <div class="wow zoomIn text-block style2" data-wow-delay="0.4s">
-                        <i class="pe-7s-news-paper"></i>
-                        <h4>وبسایت‌های خبری، ورزشی، شبکه‌های اجتماعی</h4>
-                        <p>نگران محتوای نظرات کاربران روی پست‌های خود هستید؟</p>
-                        <p>نظارت دستی روی محتوای نظرات کاربرانتان وقت و هزینه زیادی از شما می‌گیرد؟</p>
-                        <p>نظرات توهین‌آمیز و خلاف‌ادب دریافت می‌کنید؟</p>
-                        <p>نظرات نامرتبط به موضوع پست‌ها را فیلتر می‌کنید؟</p>
-                        <p>کاربرانتان لابلای نظراتشان به تبلیغات می‌پردازند؟</p>
-                    </div>
-                    <div class="wow zoomIn text-block style2" data-wow-delay="0.2s">
-                        <i class="pe-7s-shopbag"></i>
-                        <h4>فروشگاه‌های آنلاین، فروشگاه‌های نرم‌افزار موبایل</h4>
-                        <p>می‌خواهید نظرات مثبت و منفی کاربران را تفکیک کنید؟</p>
-                        <p>علاقه‌مندید براساس محتوای نظرات به کالاها امتیاز بدهید؟</p>
-                        <p>محتوای خیلی از گزارشات کاربران تکراری است؟</p>
-                    </div>
-                    <div class="wow zoomIn text-block style2" data-wow-delay="0.2s">
-                        <i style="float: right" class="pe-7s-phone"></i>
-                        <h4>نرم‌افزارهای موبایل</h4>
-                        <p>نرم‌افزارتان بخش گفتگو و نظردهی دارد؟</p>
-                        <p>نگران از دست دادن کاربران به علت محتوای برخی از نظرات هستید؟</p>
-                        <p>دنبال یک راه‌حل ارزان و ساده هستید؟</p>
-                    </div>
-                </div>
-                <div class="col-md-6 hidden-xs">
-                    <div class="layered-imgs"> <img class="wow fadeInLeft back" data-wow-delay="1.2s" src="img/thumbs/iphone-layer-2.png" width="570" height="730" alt="iPhone 6"> <img class="wow fadeInLeft" data-wow-delay="0.7s" src="img/thumbs/iphone-layer-1.png" width="570" height="730" alt="iPhone 6"> </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA download -->
-    <section class="block img-bg img2 download-cta">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
-                    <div class="cta">
-                        <h2><small class="blocked"></small>همین حالا دانلود کنید! </h2>
-                        <form action="scripts/download.php" method="post" id="downloadForm">
-                            <div class="input-group">
-                                <input class="form-control input-xl" type="email" name="email" id="downloadEmail" placeholder="ادرس ایمیل">
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-primary btn-xl" id="dLoad" ><i class="pe-7s-download"></i> <span class="hidden-xs">دانلود </span></button>
-                                </div>
-                            </div>
-                        </form>
-                        <div id="dLoadResponse" class="d-load-response"></div>
-                        <br><br>
+	<!-- description section (tabs) -->
+	<section class="block white-bg features" id="description">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2>کامنت‌ماینر چیست؟</h2>
+					<p class="lead" align="justify">کامنت‌ماینر مجموعه‌ای از راهکارهای هوشمند مدیریت و سنجش محتوای نظرات کابران قابل استفاده برای استفاده انواع وبسایت‌ها، شبکه‌‌های اجتماعی و انجمن‌های گفتگو، سیستم‌های وبلاگ‌نویسی، نرم‌افزار‌های موبایل و ... است.</p>
+					<br><br>
+					<h3>کامنت‌ماینر برای چه کسانی مناسب است؟</h3>
+					<br>
+					<div class="wow zoomIn text-block style2" data-wow-delay="0.4s">
+						<i class="pe-7s-news-paper"></i>
+						<h4>وبسایت‌های خبری، ورزشی، شبکه‌های اجتماعی</h4>
+						<p>نگران محتوای نظرات کاربران روی پست‌های خود هستید؟</p>
+						<p>نظارت دستی روی محتوای نظرات کاربرانتان وقت و هزینه زیادی از شما می‌گیرد؟</p>
+						<p>نظرات توهین‌آمیز و خلاف‌ادب دریافت می‌کنید؟</p>
+						<p>نظرات نامرتبط به موضوع پست‌ها را فیلتر می‌کنید؟</p>
+						<p>کاربرانتان لابلای نظراتشان به تبلیغات می‌پردازند؟</p>
 					</div>
-                </div>
-            </div>
-        </div>
-    </section>
+					<div class="wow zoomIn text-block style2" data-wow-delay="0.2s">
+						<i class="pe-7s-shopbag"></i>
+						<h4>فروشگاه‌های آنلاین، فروشگاه‌های نرم‌افزار موبایل</h4>
+						<p>می‌خواهید نظرات مثبت و منفی کاربران را تفکیک کنید؟</p>
+						<p>علاقه‌مندید براساس محتوای نظرات به کالاها امتیاز بدهید؟</p>
+						<p>محتوای خیلی از گزارشات کاربران تکراری است؟</p>
+					</div>
+					<div class="wow zoomIn text-block style2" data-wow-delay="0.2s">
+						<i style="float: right" class="pe-7s-phone"></i>
+						<h4>نرم‌افزارهای موبایل</h4>
+						<p>نرم‌افزارتان بخش گفتگو و نظردهی دارد؟</p>
+						<p>نگران از دست دادن کاربران به علت محتوای برخی از نظرات هستید؟</p>
+						<p>دنبال یک راه‌حل ارزان و ساده هستید؟</p>
+					</div>
+				</div>
+				<div class="col-md-6 hidden-xs">
+					<div class="layered-imgs"> <img class="wow fadeInLeft back" data-wow-delay="1.2s" src="img/thumbs/iphone-layer-2.png" width="570" height="730" alt="iPhone 6"> <img class="wow fadeInLeft" data-wow-delay="0.7s" src="img/thumbs/iphone-layer-1.png" width="570" height="730" alt="iPhone 6"> </div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <!-- main features section (tabs) -->
-    <!--<section class="block white-bg features" id="features">
+	<!-- CTA download -->
+	<section class="block img-bg img2 download-cta">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
+					<div class="cta">
+						<h2><small class="blocked"></small>همین حالا دانلود کنید! </h2>
+						<form action="scripts/download.php" method="post" id="downloadForm">
+							<div class="input-group">
+								<input class="form-control input-xl" type="email" name="email" id="downloadEmail" placeholder="ادرس ایمیل">
+								<div class="input-group-btn">
+									<button type="submit" class="btn btn-primary btn-xl" id="dLoad" ><i class="pe-7s-download"></i> <span class="hidden-xs">دانلود </span></button>
+								</div>
+							</div>
+						</form>
+						<div id="dLoadResponse" class="d-load-response"></div>
+						<br><br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- main features section (tabs) -->
+	<!--<section class="block white-bg features" id="features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -372,145 +372,130 @@
 
 	<!-- main features section (tabs) -->
 	<section class="block white-bg features" id="features">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="title-heading text-center">خدمات</h1>
-                    </div>
-                </div>
-                <br><br>
-                <div class="row">
-                    <div class="col-lg-3 col-sm-4">
-                        <div class="text-block style3"> <i class="pe-7s-comment"></i>
-                            <h4>تشخیص نظرات توهین آمیز</h4>
-                            <p align="justify">شناسایی نظرات شامل الفاظ رکیک، غیراخلاقی و توهین به دیگران با دقت بسیار‌بالا به نحوی که شما را از نظارت مستقیم بی‌نیاز می‌کند.</p>
-                        </div>
-                        <div class="text-block style3"> <i class="pe-7s-way"></i>
-                            <h4>تشخیص گرایش نظرات</h4>
-                            <p align="justify">شناسایی نظر کلی کامنت درباره پست اصلی به سه صورت مثبت، منفی و خنثی.</p>
-                        </div>
-                        <div class="text-block style3"> <i class="pe-7s-ticket"></i>
-                            <h4>تشخیص نظرات تبلیغاتی</h4>
-                            <p align="justify">جملات شامل تبلیغات به هر نحوی در این دسته قرار می‌گیرند. این تبلیغات می‌توانند شامل تبلیغ یک کالا، یک سایت یا حتی درخواست از عموم برای بازدید از صفحه شخصی فرد نظردهنده در یک شبکه اجتماعی دیگر باشد. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-4 hidden-xs">
-                        <div class="layered-imgs"> <img class="wow zoomIn" data-wow-delay="0.2s" src="img/thumbs/macbook-air.png" width="570" height="340" alt="Mac Book Pro"> </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-4">
-                        <div class="text-block style3"> <i class="pe-7s-junk"></i>
-                            <h4>تشخیص نظرات نامرتبط با موضوع</h4>
-                            <p align="justify">تشخیص نظراتی که ارتباط موضوعی با پست مربوطه ندارند و احتمالا به تشخیص مدیر سایت، نباید در نظرات نمایش داده شوند.</p>
-                        </div>
-                        <div class="text-block style3"> <i class="pe-7s-albums"></i>
-                            <h4>دسته‌بندی موضوعی نظرات</h4>
-                            <p align="justify">دسته بندی نظرات کاربران و تشخیص تعلق هر کامنت به یکی از دسته‌های موضوعی مانند سیاسی، ورزشی، عاطفی، ادبی و... و دسته بندی های جزئی تر در هر یک از آنها.</p>
-                        </div>
-                        <div class="text-block style3"> <i class="pe-7s-flag"></i>
-                            <h4>ارایه راهکارهای اختصاصی</h4>
-                            <p align="justify">تیم کامنت‌ماینر آماده است برای نیازهای خاص شما راه‌کار‌های اختصاصی در این زمینه ارائه کند.</p>
-                        </div>
-                    </div>
-                </div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="title-heading text-center">خدمات</h1>
+						</div>
+					</div>
+					<br><br>
+					<div class="row">
+						<div class="col-lg-3 col-sm-4">
+							<div class="text-block style3"> <i class="pe-7s-comment"></i>
+								<h4>تشخیص نظرات توهین آمیز</h4>
+								<p align="justify">شناسایی نظرات شامل الفاظ رکیک، غیراخلاقی و توهین به دیگران با دقت بسیار‌بالا به نحوی که شما را از نظارت مستقیم بی‌نیاز می‌کند.</p>
+							</div>
+							<div class="text-block style3"> <i class="pe-7s-way"></i>
+								<h4>تشخیص گرایش نظرات</h4>
+								<p align="justify">شناسایی نظر کلی کامنت درباره پست اصلی به سه صورت مثبت، منفی و خنثی.</p>
+							</div>
+							<div class="text-block style3"> <i class="pe-7s-ticket"></i>
+								<h4>تشخیص نظرات تبلیغاتی</h4>
+								<p align="justify">جملات شامل تبلیغات به هر نحوی در این دسته قرار می‌گیرند. این تبلیغات می‌توانند شامل تبلیغ یک کالا، یک سایت یا حتی درخواست از عموم برای بازدید از صفحه شخصی فرد نظردهنده در یک شبکه اجتماعی دیگر باشد. </p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-4 hidden-xs">
+							<div class="layered-imgs"> <img class="wow zoomIn" data-wow-delay="0.2s" src="img/thumbs/macbook-air.png" width="570" height="340" alt="Mac Book Pro"> </div>
+						</div>
+						<div class="col-lg-3 col-sm-4">
+							<div class="text-block style3"> <i class="pe-7s-junk"></i>
+								<h4>تشخیص نظرات نامرتبط با موضوع</h4>
+								<p align="justify">تشخیص نظراتی که ارتباط موضوعی با پست مربوطه ندارند و احتمالا به تشخیص مدیر سایت، نباید در نظرات نمایش داده شوند.</p>
+							</div>
+							<div class="text-block style3"> <i class="pe-7s-albums"></i>
+								<h4>دسته‌بندی موضوعی نظرات</h4>
+								<p align="justify">دسته بندی نظرات کاربران و تشخیص تعلق هر کامنت به یکی از دسته‌های موضوعی مانند سیاسی، ورزشی، عاطفی، ادبی و... و دسته بندی های جزئی تر در هر یک از آنها.</p>
+							</div>
+							<div class="text-block style3"> <i class="pe-7s-flag"></i>
+								<h4>ارایه راهکارهای اختصاصی</h4>
+								<p align="justify">تیم کامنت‌ماینر آماده است برای نیازهای خاص شما راه‌کار‌های اختصاصی در این زمینه ارائه کند.</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 	</section>
 
-    <!-- fun facts (animated stats counter) -->
-    <section class="block gray-bg no-before facts" id="facts">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="title-heading text-center"><small>تاکنون</small></h2>
-                    <div class="row">
-                        <div class="col-md-3 col-xs-6">
-                            <div class="stat-wrap wow zoomIn" data-wow-delay="0.6s"> <i class="pe-7s-like2"></i>
-                                <p><strong class="blocked">Likes </strong> We get till now</p>
-                                <h3 class="stat text-center" data-perc="1291"><span class="factor">0</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="stat-wrap wow zoomIn" data-wow-delay="0.8s"> <i class="pe-7s-cloud-download"></i>
-                                <p><strong class="blocked">Downloads </strong> Since we launched</p>
-                                <h3 class="stat text-center" data-perc="38452"><span class="factor">0</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="stat-wrap wow zoomIn" data-wow-delay="1s"> <i class="pe-7s-users"></i>
-                                <p><strong class="blocked">Total </strong> Active members</p>
-                                <h3 class="stat text-center" data-perc="19340"><span class="factor">0</span></h3>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-6">
-                            <div class="stat-wrap wow zoomIn" data-wow-delay="1.2s"> <i class="pe-7s-cup"></i>
-                                <p><strong class="blocked">Awards </strong> We have won</p>
-                                <h3 class="stat text-center" data-perc="345"><span class="factor">0</span></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-	<!-- customer members section -->
-	<section class="block white-bg team" id="customer">
+	<!-- admin -->
+<!--<section class="block gray-bg subscribe" id="admin">
 	<div class="container">
-		<h2 class="title-heading text-center colored">مشتریان</h2>
-		<div class="owl-carousel" id="customer-owl-carousel">
-			<div class="thumbnail " > <img src="img/thumbs/news1.jpg" alt="Generic placeholder thumbnail">
-				<div class="caption">
-					<h3>نام سایت یا اپلیکیشن</h3>
-					<p class="colored">آدرس</p>
-				</div>
+		<h2 class="title-heading text-center"><small>Subscribe</small> Sign up for our weekly newsletter</h2>
+		<div class="row">
+			<div class="col-lg-6 col-lg col-sm-8 col-lg-offset-3 col-sm-offset-2 text-center">
+				<form class="subscribe-form" action="scripts/subscribe.php" method="post" id="subscribeForm">
+					<div class="input-group">
+						<input class="form-control input-xl" type="email" name="email" id="subscribe_email" placeholder="name@website.com">
+						<div class="input-group-btn">
+							<button type="submit" class="btn btn-primary btn-xl" id="subSend" > <span class="hidden-xs">Subscribe Now</span><i class="pe-7s-paper-plane visible-xs"></i> </button>
+						</div>
+					</div>
+				</form>
+				<div class="sub-response" id="subscriptionResponse"></div>
+				<p>We are working to make things better. Want to keep up to date with all our news and information?  Enter your email to add into our mailing list. We hate spaming.</p>
 			</div>
-			<div class="thumbnail " > <img src="img/thumbs/news2.jpg" alt="Generic placeholder thumbnail">
-				<div class="caption">
-					<h3>نام سایت یا اپلیکیشن</h3>
-					<p class="colored">آدرس</p>
-				</div>
-			</div>
-			<div class="thumbnail " > <img src="img/thumbs/news3.jpg" alt="Generic placeholder thumbnail">
-				<div class="caption">
-					<h3>نام سایت یا اپلیکیشن</h3>
-					<p class="colored">آدرس</p>
-				</div>
-			</div>
-			<div class="thumbnail " > <img src="img/thumbs/news1.jpg" alt="Generic placeholder thumbnail">
-					<div class="caption">
-						<h3>نام سایت یا اپلیکیشن</h3>
-						<p class="colored">آدرس</p>
-					</div>
-				</div>
-			<div class="thumbnail"> <img src="img/thumbs/news2.jpg" alt="Generic placeholder thumbnail">
-					<div class="caption">
-						<h3>نام سایت یا اپلیکیشن</h3>
-						<p class="colored">آدرس</p>
-					</div>
-				</div>
-			<div class="thumbnail"> <img src="img/thumbs/news3.jpg" alt="Generic placeholder thumbnail">
-					<div class="caption">
-						<h3>نام سایت یا اپلیکیشن</h3>
-						<p class="colored">آدرس</p>
-					</div>
-				</div>
-			<div class="thumbnail"> <img src="img/thumbs/news1.jpg" alt="Generic placeholder thumbnail">
-					<div class="caption">
-						<h3>نام سایت یا اپلیکیشن</h3>
-						<p class="colored">آدرس</p>
-					</div>
-				</div>
-			<div class="thumbnail"> <img src="img/thumbs/news2.jpg" alt="Generic placeholder thumbnail">
-					<div class="caption">
-						<h3>نام سایت یا اپلیکیشن</h3>
-						<p class="colored">آدرس</p>
-					</div>
-				</div>
 		</div>
 	</div>
+	</section>-->
+
+	<!-- customer members section -->
+	<section class="block gray-bg team" id="customer">
+		<div class="container">
+			<h2 class="title-heading text-center colored">مشتریان</h2>
+			<div class="owl-carousel" id="customer-owl-carousel">
+				<div class="thumbnail " > <img src="img/thumbs/news1.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+				<div class="thumbnail " > <img src="img/thumbs/news2.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+				<div class="thumbnail " > <img src="img/thumbs/news3.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+				<div class="thumbnail " > <img src="img/thumbs/news1.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+				<div class="thumbnail"> <img src="img/thumbs/news2.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+				<div class="thumbnail"> <img src="img/thumbs/news3.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+				<div class="thumbnail"> <img src="img/thumbs/news1.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+				<div class="thumbnail"> <img src="img/thumbs/news2.jpg" alt="Generic placeholder thumbnail">
+					<div class="caption">
+						<h3>نام سایت یا اپلیکیشن</h3>
+						<p class="colored">آدرس</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<!-- team members section -->
@@ -559,6 +544,43 @@
 			</div>
 		</div>
 	</section>
+
+	<!-- fun facts (animated stats counter) -->
+	<!--<section class="block gray-bg no-before facts" id="facts">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="title-heading text-center"><small>تاکنون</small></h2>
+                    <div class="row">
+                        <div class="col-md-3 col-xs-6">
+                            <div class="stat-wrap wow zoomIn" data-wow-delay="0.6s"> <i class="pe-7s-like2"></i>
+                                <p><strong class="blocked">Likes </strong> We get till now</p>
+                                <h3 class="stat text-center" data-perc="1291"><span class="factor">0</span></h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="stat-wrap wow zoomIn" data-wow-delay="0.8s"> <i class="pe-7s-cloud-download"></i>
+                                <p><strong class="blocked">Downloads </strong> Since we launched</p>
+                                <h3 class="stat text-center" data-perc="38452"><span class="factor">0</span></h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="stat-wrap wow zoomIn" data-wow-delay="1s"> <i class="pe-7s-users"></i>
+                                <p><strong class="blocked">Total </strong> Active members</p>
+                                <h3 class="stat text-center" data-perc="19340"><span class="factor">0</span></h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="stat-wrap wow zoomIn" data-wow-delay="1.2s"> <i class="pe-7s-cup"></i>
+                                <p><strong class="blocked">Awards </strong> We have won</p>
+                                <h3 class="stat text-center" data-perc="345"><span class="factor">0</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
 
 	<!-- user/client testimonials -->
 	<!--<section class="block img-bg img3 testimonials" id="testimonials">
@@ -662,7 +684,7 @@
 			</div>
 		</div>
 	</section>-->
-	
+
 	<!-- plans and pricing charts -->
 	<!--<section class="block white-bg no-bottom plans" id="plans">
 	<div class="container">
@@ -729,7 +751,7 @@
 	</div>
 	</section>-->
 	<!--<hr>-->
-	
+
 	<!-- FAQ -->
 	<!--<section class="block faq" id="faq">
 	<div class="container">
@@ -832,87 +854,67 @@
 		</div>
 	</div>
 	</section>-->
-	
-	<!-- newsletter subscription -->
-	<!--<section class="block gray-bg subscribe" id="subscribe">
-	<div class="container">
-		<h2 class="title-heading text-center"><small>Subscribe</small> Sign up for our weekly newsletter</h2>
-		<div class="row">
-			<div class="col-lg-6 col-lg col-sm-8 col-lg-offset-3 col-sm-offset-2 text-center">
-				<form class="subscribe-form" action="scripts/subscribe.php" method="post" id="subscribeForm">
-					<div class="input-group">
-						<input class="form-control input-xl" type="email" name="email" id="subscribe_email" placeholder="name@website.com">
-						<div class="input-group-btn">
-							<button type="submit" class="btn btn-primary btn-xl" id="subSend" > <span class="hidden-xs">Subscribe Now</span><i class="pe-7s-paper-plane visible-xs"></i> </button>
-						</div>
-					</div>
-				</form>
-				<div class="sub-response" id="subscriptionResponse"></div>
-				<p>We are working to make things better. Want to keep up to date with all our news and information?  Enter your email to add into our mailing list. We hate spaming.</p>
-			</div>
-		</div>
-	</div>
-	</section>-->
-	
+
+
 	<!-- footer -->
 	<footer class="footer">
-	<div class="container">
-		<!--<h2 class="title-heading text-center"><small>News &amp; updates</small> See what is hot today</h2>
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="short-post"> <a class="post-thumb thumb lightbox hidden-xs" href="img/thumbs/news1.jpg" title="Apple is planning to design a cPhone in 2015."><img class="img-responsive" src="img/thumbs/news1.jpg" width="370" height="245" alt="News one"></a>
-					<h4 class="short-post-title"><a href="javascript:void(0);" title="Apple is planning to design a cPhone in 2015.">Apple is planning to design a cPhone in 2015.</a></h4>
-					<p class="post-meta"><span class="date">Nov 25, 2014</span> <span class="author">by John Doe</span></p>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="short-post"> <a class="post-thumb thumb lightbox hidden-xs" href="img/thumbs/news2.jpg" title="Something amazing is happening here."><img class="img-responsive" src="img/thumbs/news2.jpg" width="370" height="245" alt="News one"></a>
-					<h4 class="short-post-title"><a href="javascript:void(0);" title="Something amazing is happening here.">Something amazing is happening here.</a></h4>
-					<p class="post-meta"><span class="date">Nov 25, 2014</span> <span class="author">by John Doe</span></p>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="short-post"> <a class="post-thumb thumb lightbox hidden-xs" href="img/thumbs/news3.jpg" title="This is another news update."><img class="img-responsive" src="img/thumbs/news3.jpg" width="370" height="245" alt="News one"></a>
-					<h4 class="short-post-title"><a href="javascript:void(0);" title="This is another news update.">This is another news update.</a></h4>
-					<p class="post-meta"><span class="date">Nov 25, 2014</span> <span class="author">by John Doe</span></p>
-				</div>
-			</div>
-		</div>-->
-		<hr class="ft-hr">
-		<div class="row">
-			<div class="col-md-5">
-				<div class="ft-social">
-					<div class="social">
-						<ul>
-							<li><a class="tip" data-toggle="tooltip" href="javascript:void(0);" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-							<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
-							<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-						</ul>
+		<div class="container">
+			<!--<h2 class="title-heading text-center"><small>News &amp; updates</small> See what is hot today</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="short-post"> <a class="post-thumb thumb lightbox hidden-xs" href="img/thumbs/news1.jpg" title="Apple is planning to design a cPhone in 2015."><img class="img-responsive" src="img/thumbs/news1.jpg" width="370" height="245" alt="News one"></a>
+                        <h4 class="short-post-title"><a href="javascript:void(0);" title="Apple is planning to design a cPhone in 2015.">Apple is planning to design a cPhone in 2015.</a></h4>
+                        <p class="post-meta"><span class="date">Nov 25, 2014</span> <span class="author">by John Doe</span></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="short-post"> <a class="post-thumb thumb lightbox hidden-xs" href="img/thumbs/news2.jpg" title="Something amazing is happening here."><img class="img-responsive" src="img/thumbs/news2.jpg" width="370" height="245" alt="News one"></a>
+                        <h4 class="short-post-title"><a href="javascript:void(0);" title="Something amazing is happening here.">Something amazing is happening here.</a></h4>
+                        <p class="post-meta"><span class="date">Nov 25, 2014</span> <span class="author">by John Doe</span></p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="short-post"> <a class="post-thumb thumb lightbox hidden-xs" href="img/thumbs/news3.jpg" title="This is another news update."><img class="img-responsive" src="img/thumbs/news3.jpg" width="370" height="245" alt="News one"></a>
+                        <h4 class="short-post-title"><a href="javascript:void(0);" title="This is another news update.">This is another news update.</a></h4>
+                        <p class="post-meta"><span class="date">Nov 25, 2014</span> <span class="author">by John Doe</span></p>
+                    </div>
+                </div>
+            </div>-->
+			<hr class="ft-hr">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="ft-social">
+						<div class="social">
+							<ul>
+								<li><a class="tip" data-toggle="tooltip" href="javascript:void(0);" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+								<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+								<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+								<li><a class="tip" data-toggle="tooltip"  href="javascript:void(0);" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-7">
-				<div class="copyright">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="copy-text"> <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" title="Contact Us">ارتباط با ما</a> آدرس: فلان جا<br>
-								<small>&copy; 2016 CommentMiner.ir | All Rights Reserved</small> </div>
-						</div>
-						<div class="col-md-6">
-							<a href="#home" class="ft-logo" title="کامنت ماینر - مدیریت نظرات"><img src="img/logos/logo%20(1).png" height="45" alt="commentminer"></a>
+				<div class="col-md-7">
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="copy-text"> <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" title="Contact Us">ارتباط با ما</a> آدرس: فلان جا<br>
+									<small>&copy; 2016 CommentMiner.ir | All Rights Reserved</small> </div>
+							</div>
+							<div class="col-md-6">
+								<a href="#home" class="ft-logo" title="کامنت ماینر - مدیریت نظرات"><img src="img/logos/logo%20(1).png" height="45" alt="commentminer"></a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</footer>
-	
+
 	<!-- Button trigger modal -->
 	<div class="contact-icon"> <a href="javascript:void(0);" data-toggle="modal" data-target="#myModal" class="contact-link tip" data-placement="top" title="ارتباط با ما"><i class="pe-7s-mail wow flash" data-wow-duration="3s" data-wow-iteration="1000"></i></a> </div>
-	
+
 	<!-- Modal with contact form -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -949,25 +951,25 @@
 </div>
 
 <!-- all javascript/jquery plugins -->
-<script src="scripts/jquery.js"></script> 
+<script src="scripts/jquery.js"></script>
 <script src="bootstrap-rtl-3.3.4/dist/js/bootstrap.min.js"></script>
-<script src="scripts/fitvids.js"></script> 
-<script src="scripts/parallax.js"></script> 
-<script src="scripts/nivo-lightbox.js"></script> 
-<script src="scripts/retina.js"></script> 
-<script src="scripts/appear.js"></script> 
-<script src="scripts/wow.js"></script> 
-<script src="scripts/validate.js"></script> 
-<script src="scripts/form.js"></script> 
-<script src="scripts/contact.js"></script> 
+<script src="scripts/fitvids.js"></script>
+<script src="scripts/parallax.js"></script>
+<script src="scripts/nivo-lightbox.js"></script>
+<script src="scripts/retina.js"></script>
+<script src="scripts/appear.js"></script>
+<script src="scripts/wow.js"></script>
+<script src="scripts/validate.js"></script>
+<script src="scripts/form.js"></script>
+<script src="scripts/contact.js"></script>
 <script src="scripts/count-to.js"></script>
-<script src="scripts/owl.js"></script> 
-<script src="scripts/smooth-scroll.js"></script> 
-<script src="scripts/smoothscroll.min.js"></script> 
-<script src="scripts/fittext.js"></script> 
-<script src="scripts/lettering.js"></script> 
-<script src="scripts/textillate.js"></script> 
-<script src="scripts/scroll-to-top.js"></script> 
+<script src="scripts/owl.js"></script>
+<script src="scripts/smooth-scroll.js"></script>
+<script src="scripts/smoothscroll.min.js"></script>
+<script src="scripts/fittext.js"></script>
+<script src="scripts/lettering.js"></script>
+<script src="scripts/textillate.js"></script>
+<script src="scripts/scroll-to-top.js"></script>
 <script src="scripts/main.js"></script>
 </body>
 </html>

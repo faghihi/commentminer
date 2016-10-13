@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::get('/Pannel', function () {
     return view('Pannel/index');
 });
-Route::get('/UserArea', function () {
-    return view('Pannel/login-signup');
-})->middleware('LoginProof');
+Route::get('/UserArea', 'UserControl@getLogin')->middleware('LoginProof');
+Route::get('/Plans','ServiceControl@RetrieveOptions');
+Route::get('/Services','ServiceControl@RetrieveMine');
+Route::get('/test', 'UserControl@test');
