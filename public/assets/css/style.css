@@ -5,6 +5,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*-----declare font-----*/
+@import url('../vendor/fontiran.css');
+/*-----*/
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -255,7 +258,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "IRANSans", Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #373a3c;
@@ -399,7 +402,7 @@ output {
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
-  font-family: inherit;
+  font-family: "IRANSans",inherit;
   font-weight: 400;
   line-height: 1.1;
   color: inherit; }
@@ -566,7 +569,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace; }
+  font-family: "IRANSans",Menlo, Monaco, Consolas, "Courier New", monospace; }
 
 code {
   padding: .2rem .4rem;
@@ -3020,8 +3023,7 @@ input[type="button"].btn-block {
     content: "";
     display: table;
     clear: both; }
-  .breadcrumb > li {
-    float: left; }
+  .breadcrumb>li{float: right;}
     .breadcrumb > li + li::before {
       padding-right: .5rem;
       padding-left: .5rem;
@@ -3776,7 +3778,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "IRANSans",Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -3855,7 +3857,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "IRANSans",Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -4742,7 +4744,7 @@ html.bootstrap-layout .ls-top.layout-content {
   z-index: 99;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: 5px; }
   .simplebar-track .simplebar-scrollbar {
@@ -5382,7 +5384,7 @@ html.bootstrap-layout .ls-top.layout-content {
     margin-left: 250px; }
   .si-r3-md-up > .layout-content, .si-r3-md-up >
   .st-container > .st-pusher > .st-content > .layout-content {
-    margin-right: 250px; } }
+    margin-right: 250px; margin-left: 0px; } }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .si-si-1-lg {
@@ -5758,13 +5760,13 @@ html.bootstrap-layout .ls-top.layout-content {
   display: block;
   font-weight: 400;
   line-height: 42px;
-  padding-left: 18.75px;
+  padding-right: 18.75px;
   font-size: 15px; }
   .sidebar-menu-button, .sidebar-menu-button:hover, .sidebar-menu-button:focus {
     text-decoration: none; }
 
 .sidebar-menu-button:not(:only-child):before {
-  font-family: "Material Icons";
+  font-family: "IRANSans","Material Icons";
   content: "";
   position: absolute;
   right: 18.75px;
@@ -5785,7 +5787,7 @@ html.bootstrap-layout .ls-top.layout-content {
 
 .sidebar-menu-label {
   position: absolute;
-  right: 18.75px;
+  left: 18.75px;
   margin-top: 13px;
   padding: 0.2rem 0.3rem;
   font-size: 0.75rem; }
@@ -5929,7 +5931,7 @@ html.bootstrap-layout .ls-top.layout-content {
 .sidebar-heading {
   font-weight: 500;
   font-size: 0.9rem;
-  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "IRANSans",Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: normal;
   line-height: normal;

@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use Redirect;
 
 class LoginProof
 {
@@ -17,7 +19,7 @@ class LoginProof
     {
         if(\Session::get('Login')=="True")
         {
-            return Redirect::back();
+            return redirect('/Pannel');
         }
         return $next($request);
     }

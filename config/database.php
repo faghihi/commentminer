@@ -67,8 +67,8 @@ return [
         ],
         'sqlsrv' => [
             'driver' => 'sqlsrv',
-            'host' => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'commentminer'),
+            'host' => env('DB_HOST', '.\SQLExpress'),
+            'database' => env('DB_DATABASE', 'CommentMiner'),
             'username' => env('DB_USERNAME', 'sa'),
             'password' => env('DB_PASSWORD', '56003990'),
             'charset' => 'utf8',

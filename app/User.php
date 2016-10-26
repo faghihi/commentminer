@@ -26,6 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'Password'
     ];
+    protected $primaryKey = 'UserId';
 
     protected $table="UserProfile";
+    public $timestamps = false;
+    public function setUpdatedAt($value)
+    {
+        //Do-nothing
+    }
+
+    public function getUpdatedAtColumn()
+    {
+        //Do-nothing
+    }
 }
