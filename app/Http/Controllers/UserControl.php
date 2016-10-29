@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Activate;
+use App\Contact;
+use App\Subscribe;
+use App\Tickets;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -26,12 +29,43 @@ class UserControl extends Controller
 //            echo $user->UserId;
 //        }
 
-        $users=User::all();
-        foreach ($users as $user){
-            echo $user->UserName;
+//        $users=User::all();
+//        foreach ($users as $user){
+//            echo $user->UserName;
+//        }
+//        $time =date('Y-m-d H:i:s');
+//        $final = strtotime(date("Y-m-d H:i:s", strtotime($time)) . " +1 month");
+//        $final = date("Y-m-d H:i:s",$final);
+//        echo $final."<BR>";
+//        echo $time;
+        $username=Session::get('UserName');
+        $id=User::where('UserName',$username)->first()->UserId;
+        $tickets=Tickets::where('UserId',$id)->get();
+        $check=1;
+        foreach($tickets as $ticket){
+            if($ticket['Seen']=="0")
+                $check=0;
         }
+        echo $check;
     }
-
+    public function ContactSave(){
+        $name=Input::get('name');
+        $subject=Input::get('subject');
+        $email=Input::get('email');
+        $message=Input::get('message');
+        $contact=new Contact();
+        $contact->Name=$name;
+        $contact->Email=$email;
+        $contact->Subject=$subject;
+        $contact->message=$message;
+        $check=$contact->save();
+    }
+    public function Subscribe(){
+        $email=Input::get('email');
+        $sub=new Subscribe();
+        $sub->Email=$email;
+        $sub->save();
+    }
     public function getLogin(){
         // Check if this is a redirection or not
         if(isset($_GET['error']))
@@ -42,7 +76,41 @@ class UserControl extends Controller
         //Returning the page View with the Save Error Option
         return view('Pannel/login-signup')->with('error',$Error);
     }
-
+    public function ForgotPass(){
+        return view('Pannel/forgot-pass');
+    }
+    public function PassRenew(){
+        $Email=Input::get('Email');
+        $user=User::where('Email',$Email)->first();
+        if(!is_null($user)){
+            Session::put('UserName',$Email);
+            $this->html_email_Forgot($Email,$Email);
+            return redirect('/ForgotPass?OK=True');
+        }
+        else{
+            return redirect('/UserArea');
+        }
+    }
+    public function PassForgotRenew(){
+        if(Session::get('Login')=="True"){
+            return redirect('/Profile');
+        }
+        if(Session::get('UserName'))
+        {
+            return view('Pannel/change-pass');
+        }
+        return redirect('/UserArea');
+    }
+    public function FinalForgot(){
+        if(Session::get('Login')=="True" || !Session::get('UserName')){
+            return redirect('/UserArea');
+        }
+        $user=User::where('UserName',Session::get('UserName'))->first();
+        $user=User::find($user->UserId);
+        $user->Password=Input::get('Password');
+        $user->save();
+        return redirect('/PassPage?OK=True');
+    }
     public function Signup(){
         $input=Input::all();
         $newuser=new User();
@@ -59,12 +127,20 @@ class UserControl extends Controller
             $sample->UserId=$Id;
             $sample->save();
             $this->html_email($valid,$newuser->Email);
-            return redirect('/UserArea');
+            return redirect('/UserArea?error=SignUp');
         }
         else{
             return redirect('/UserArea?error=save');
         }
         
+    }
+    public function html_email_Forgot($Code,$Email){
+        $data = array('code'=>"localhost:8000/PassPage?code=".$Code);
+        Mail::send('mail1', $data, function($message) use ($Email) {
+            $message->to($Email, 'کامنت ماینر')->subject
+            ('تغییر رمز اکانت کامنت ماینر');
+            $message->from('h.faghihi15@gmail.com','کامنت ماینر');
+        });
     }
     public function html_email($Code,$Email){
         $data = array('code'=>"localhost:8000/Activate/".$Code);
@@ -164,23 +240,36 @@ class UserControl extends Controller
         return redirect('/');
     }
 
-    public function ForgotPass(){
-        
-    }
 
     public function GetDashboard(){
         if(Session::get('Login')=='True')
         {
-            return view('Pannel/index');
+            $username=Session::get('UserName');
+            $id=User::where('UserName',$username)->first()->UserId;
+            $tickets=Tickets::where('UserId',$id)->get();
+            $check=1;
+            foreach($tickets as $ticket){
+                if($ticket['Seen']=="0")
+                    $check=0;
+            }
+            return view('Pannel/index')->with('New',$check);
         }
         else {
             return redirect('/UserArea');
         }
     }
     public function GetEdit(){
+        $username=Session::get('UserName');
+        $id=User::where('UserName',$username)->first()->UserId;
+        $tickets=Tickets::where('UserId',$id)->get();
+        $check=1;
+        foreach($tickets as $ticket){
+            if($ticket['Seen']=="0")
+                $check=0;
+        }
         if(Session::get('Login')=='True')
         {
-            return view('Pannel/edit');
+            return view('Pannel/edit')->with('New',$check);
         }
         else {
             return redirect('/UserArea');

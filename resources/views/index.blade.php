@@ -57,6 +57,7 @@
 					<li><a href="#description">کامنت ماینر چیست؟</a></li>
 					<li><a href="#features">خدمات</a></li>
 					<li><a href="#customer">مشتریان</a></li>
+					<li><a href="/UserArea">خرید سرویس و اعضا</a></li>
 					<!--<li><a href="#testimonials">Testimonials</a></li>-->
 					<!--<li><a href="#plans"></a></li>-->
 					<!--<li><a href="#faq">تماس با ما</a></li>-->
@@ -151,12 +152,13 @@
 			<div class="row">
 				<div class="col-md-8 col-sm-10 col-md-offset-2 col-sm-offset-1">
 					<div class="cta">
-						<h2><small class="blocked"></small>همین حالا دانلود کنید! </h2>
-						<form action="scripts/download.php" method="post" id="downloadForm">
+						<h2><small class="blocked"></small>خبر های ما را از دست ندهید </h2>
+						<form action="/Subscribe" method="post" id="downloadForm">
+							<input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 							<div class="input-group">
 								<input class="form-control input-xl" type="email" name="email" id="downloadEmail" placeholder="ادرس ایمیل">
 								<div class="input-group-btn">
-									<button type="submit" class="btn btn-primary btn-xl" id="dLoad" ><i class="pe-7s-download"></i> <span class="hidden-xs">دانلود </span></button>
+									<button type="submit" class="btn btn-primary btn-xl" id="dLoad" ><span class="hidden-xs">عضویت در خبرنامه </span></button>
 								</div>
 							</div>
 						</form>
@@ -924,9 +926,10 @@
 					<h4 style="color: #000;" class="modal-title" id="myModalLabel">ارتباط با ما</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" class="form" method="post" id="contactForm" action="scripts/send.php">
+					<form role="form" class="form" method="post" id="contactForm" action="/ContactSend">
 						<div class="form-group">
 							<label for="visiterName">نام <sup>*</sup></label>
+							<input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 							<input type="text" class="form-control input-xl" id="visiterName" name="name" placeholder="نام کامل">
 						</div>
 						<div class="form-group">

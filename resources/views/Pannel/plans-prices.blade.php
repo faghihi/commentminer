@@ -32,7 +32,7 @@
     <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
     <!-- Brand -->
-    <a href="index.blade.php" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+    <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
 
     <!-- Menu -->
     <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li class="dropdown-item email-item">
-                    <a class="nav-link" href="index.blade.php">
+                    <a class="nav-link" href="/Pannel">
               <span class="media">
 					<span class="media-left media-middle">
 						<i class="material-icons">mail</i>
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="dropdown-item email-item">
-                    <a class="nav-link" href="index.blade.php">
+                    <a class="nav-link" href="/Pannel">
               <span class="media">
 					<span class="media-left media-middle">
 						<i class="material-icons">mail</i>
@@ -96,9 +96,9 @@
                 <i class="material-icons md-36">account_circle</i>
             </a>
             <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-                <a class="dropdown-item" href="edit.blade.php"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
+                <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
                 <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-                <a class="dropdown-item" href="#">خروج</a>
+                <a class="dropdown-item" href="/SignOut">خروج</a>
             </div>
         </li>
         <!-- // END User dropdown -->
@@ -112,28 +112,29 @@
 <div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
     <ul class="sidebar-menu">
         <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="index.blade.php">
+            <a class="sidebar-menu-button" href="/Pannel">
                 <i class="sidebar-menu-icon material-icons">home</i> داشبورد
             </a>
         </li>
         <li class="sidebar-menu-item active">
-            <a class="sidebar-menu-button" href="plans-prices.blade.php">
+            <a class="sidebar-menu-button" href="/Plans">
                 <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
             </a>
         </li>
         <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="invoice.blade.php">
+            <a class="sidebar-menu-button" href="/Services">
                 <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
             </a>
         </li>
         <li class="sidebar-menu-item">
             <a class="sidebar-menu-button" href="/Tickets">
                 <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-                <span class="sidebar-menu-label tooltip-right label label-primary">2</span>
-            </a>
+                @if($New==0)
+                    <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
+                @endif            </a>
         </li>
         <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="edit.blade.php">
+            <a class="sidebar-menu-button" href="/Profile">
                 <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
             </a>
         </li>
@@ -145,7 +146,7 @@
   <div class="layout-content plans" data-scrollable>
     <div class="container-fluid">
         <ol class="breadcrumb hidden-print">
-            <li><a href="index.blade.php">صفحه اصلی</a></li>
+            <li><a href="/Pannel">صفحه اصلی</a></li>
             <li class="active">طرح&zwnj;ها</li>
         </ol>
         <div class="card">
@@ -153,64 +154,51 @@
                 <h2 class="center m-t-2 m-b-3">
                     <strong>کدام طرح؟</strong>
                 </h2>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="plan basic">
-                            <div class="header">
-                                <div class="title"> Basic </div>
-                                <div class="price">
-                                    <h3>$<span>3.5</span>/m</h3>
-                                    <small>Some basic description of the plan.</small> </div>
+                <?php $i=0;?>
+                @foreach($Plans as $plan)
+                    @if($i%3==0)
+                        <div class="row">
+                        <div class="col-lg-12">
+                            @endif
+                            <div class="plan best_value">
+                                <div class="header">
+                                    <div class="title"> {{$plan['Name']}} </div>
+                                    <BR>
+                                    <div class="price">
+                                        <h3>{{$plan['Price']}} تومان<span></span>/{{$plan['Period']/30}}ماه</h3>
+                                        <small>{{$plan['Desc']}}</small> </div>
+                                </div>
+                                <div class="features-list">
+                                    <ul class="features">
+                                        <?php
+                                            $count=0;
+                                            if(isset($plan['Fi'])){
+                                            foreach ($plan['Fi'] as $feature)
+                                            {
+                                                $count++;
+                                                ?>
+                                             <li>{{$feature}}</li>
+                                            <?php
+                                                }
+                                            }
+                                                for($count;$count<=$Max;$count++){
+                                                    ?>
+                                            <li><i class="material-icons md-24">clear</i></li>
+                                            <?php
+                                                }
+                                            ?>
+
+                                    </ul>
+                                </div>
+                                <footer><a href="/BuyService?plan={{$plan['PlanId']}}" class="btn btn-primary btn-lg">خرید</a></footer>
                             </div>
-                            <div class="features-list">
-                                <ul class="features">
-                                    <li>Unlimited Bandwidth</li>
-                                    <li><strong>100 GB</strong> Disk Space</li>
-                                    <li><strong>10</strong> Databases</li>
-                                    <li><i class="material-icons">clear</i></li>
-                                    <li><i class="material-icons">clear</i></li>
-                                </ul>
-                            </div>
-                            <footer><a href="#" class="btn btn-primary btn-lg">خرید</a></footer>
-                        </div>
-                        <div class="plan best-value" >
-                            <div class="header">
-                                <div class="title"> Best Value </div>
-                                <div class="price">
-                                    <h3 class="colored">$<span>5</span>/m</h3>
-                                    <small>Some basic description of the plan.</small> </div>
-                            </div>
-                            <div class="features-list">
-                                <ul class="features">
-                                    <li>Unlimited Bandwidth</li>
-                                    <li><strong>100 GB</strong> Disk Space</li>
-                                    <li><strong>10</strong> Databases</li>
-                                    <li>Life Time Updates</li>
-                                    <li><i class="material-icons md-24">clear</i></li>
-                                </ul>
-                            </div>
-                            <footer><a href="#" class="btn btn-primary btn-lg">خرید</a></footer>
-                        </div>
-                        <div class="plan unlimited">
-                            <div class="header">
-                                <div class="title"> Unlimited </div>
-                                <div class="price">
-                                    <h3>$<span>6.5</span>/m</h3>
-                                    <small>Some basic description of the plan.</small> </div>
-                            </div>
-                            <div class="features-list">
-                                <ul class="features">
-                                    <li>Unlimited Bandwidth</li>
-                                    <li><strong>100 GB</strong> Disk Space</li>
-                                    <li><strong>10</strong> Databases</li>
-                                    <li>Life Time Updates</li>
-                                    <li>Priority Support</li>
-                                </ul>
-                            </div>
-                            <footer><a href="#" class="btn btn-primary btn-lg">خرید</a></footer>
-                        </div>
-                    </div>
-                </div>
+                            @if($i%3==2)
+                                </div>
+                                </div>
+                                <BR>
+                             @endif
+                        <?php $i++; ?>
+                    @endforeach
             </div>
         </div>
 

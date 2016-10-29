@@ -30,6 +30,9 @@
         @if($error=="login")
           <p class="text-muted-light">رمز یا ایمیل وارد شده صحیح نمیباشد</p>
         @endif
+        @if($error=="SignUp")
+          <p class="text-muted-light">ایمیل فعال سازی برای شما ارسال شد </p>
+        @endif
       </h2>
       <div class="card-group" dir="rtl">
         <div class="card bg-transparent">
@@ -45,7 +48,7 @@
               <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
               <div class="form-group">
                 <input type="password" name="Password" class="form-control" placeholder="رمز عبور">
-                <a href="#" class="pull-xs-left">
+                <a href="/ForgotPass" class="pull-xs-left">
                   <small>فراموش کردید؟</small>
                 </a>
                 <div class="clearfix"></div>

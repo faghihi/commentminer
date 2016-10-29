@@ -33,7 +33,7 @@
   <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
   <!-- Brand -->
-  <a href="index.blade.php" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+  <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
 
   <!-- Menu -->
   <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -56,7 +56,7 @@
                 </a>
             </li>
             <li class="dropdown-item email-item">
-                <a class="nav-link" href="index.blade.php">
+                <a class="nav-link" href="/Pannel">
           <span class="media">
                 <span class="media-left media-middle">
                     <i class="material-icons">mail</i>
@@ -70,7 +70,7 @@
                 </a>
             </li>
             <li class="dropdown-item email-item">
-                <a class="nav-link" href="index.blade.php">
+                <a class="nav-link" href="/Pannel">
           <span class="media">
                 <span class="media-left media-middle">
                     <i class="material-icons">mail</i>
@@ -97,9 +97,9 @@
         <i class="material-icons md-36">account_circle</i>
       </a>
       <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-        <a class="dropdown-item" href="edit.blade.php"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
+        <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
         <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-        <a class="dropdown-item" href="#">خروج</a>
+        <a class="dropdown-item" href="/SignOut">خروج</a>
       </div>
     </li>
     <!-- // END User dropdown -->
@@ -113,28 +113,30 @@
 <div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
   <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="index.blade.php">
+      <a class="sidebar-menu-button" href="/Pannel">
         <i class="sidebar-menu-icon material-icons">home</i> داشبورد
       </a>
     </li>
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="plans-prices.blade.php">
+      <a class="sidebar-menu-button" href="/Plans">
         <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
       </a>
     </li>
     <li class="sidebar-menu-item active">
-      <a class="sidebar-menu-button" href="invoice.blade.php">
+      <a class="sidebar-menu-button" href="/Services">
         <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
       </a>
     </li>
     <li class="sidebar-menu-item">
       <a class="sidebar-menu-button" href="/Tickets">
         <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-        <span class="sidebar-menu-label tooltip-right label label-primary">2</span>
+        @if($New==0)
+          <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
+        @endif
       </a>
     </li>
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="edit.blade.php">
+      <a class="sidebar-menu-button" href="/Profile">
         <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
       </a>
     </li>
@@ -147,7 +149,7 @@
     <div class="container-fluid">
 
       <ol class="breadcrumb hidden-print">
-        <li><a href="index.blade.php">صفحه اصلی</a></li>
+        <li><a href="/Pannel">صفحه اصلی</a></li>
         <li class="active">سرویس&zwnj;های من</li>
       </ol>
 
@@ -161,24 +163,24 @@
         <p>برای اطلاع از جزییات سرویس روی نام آن کلیک کنید.</p>
         <p><i class="material-icons md-18">autorenew</i> تعویض کد سرویس</p>
         <p><i class="material-icons md-18">update</i>تمدید سرویس</p>
-        <p><i class="material-icons md-18">delete</i>حذف سرویس</p>
+        {{--<p><i class="material-icons md-18">delete</i>حذف سرویس</p>--}}
       </div>
       <!-- Table -->
       <div class="card">
         <div class="card-header">
           <div class="row">
-            <div class="col-md-6">
-              <form action="#" class="form-inline">
-                <div class="form-group">
-                  <label for="#">فیلتر: </label>
-                  <select class="c-select form-control">
-                    <option selected>همه</option>
-                    <option value="1">فعال</option>
-                    <option value="2">تمام شده</option>
-                  </select>
-                </div>
-              </form>
-            </div>
+            {{--<div class="col-md-6">--}}
+              {{--<form action="#" class="form-inline">--}}
+                {{--<div class="form-group">--}}
+                  {{--<label for="#">فیلتر: </label>--}}
+                  {{--<select class="c-select form-control">--}}
+                    {{--<option selected>همه</option>--}}
+                    {{--<option value="1">فعال</option>--}}
+                    {{--<option value="2">تمام شده</option>--}}
+                  {{--</select>--}}
+                {{--</div>--}}
+              {{--</form>--}}
+            {{--</div>--}}
             <!--<div class="col-md-6">
               <div class="dropdown pull-md-right">
                 <a href="#" class="btn btn-primary-outline btn-rounded dropdown-toggle" data-toggle="dropdown">Action</a>
@@ -195,8 +197,8 @@
           <table class="table table-bordered m-b-0">
             <thead>
             <tr>
-              <th style="width:60px;" class="center">#</th>
-              <th>سرویس</th>
+              <th style="width:60px;" class="center">تعداد تاثیر ها</th>
+              <th>شماره پلن</th>
               <th class="center">شناسه سرویس</th>
               <th class="center">شروع طرح</th>
               <th class="center">پایان طرح</th>
@@ -205,110 +207,102 @@
             </tr>
             </thead>
             <tbody>
+            <?php $count=1; ?>
+            @foreach($Services as $service)
             <tr>
-              <td class="center">1</td>
+              <td class="center">{{$service['Count']}}</td>
               <td>
-                <a href="#" data-toggle="modal" data-target="#myModal">
-                   <span>سرویس شماره 1&nbsp;<small>vestacamp.ir</small></span>
-                </a>
+                {{--<a href="#" data-toggle="modal" data-target="#myModal">--}}
+                <P>
+                   <span>{{$service['PlanId']}}&nbsp;
+                     {{--<small>فلان سرویس</small>--}}
+                   </span>
+                </P>
               </td>
-              <td class="center">22hfge3</td>
-              <td class="center">1395/07/01</td>
-              <td class="center">1395/08/01</td>
+              <td class="center">{{$service['Token']}}</td>
+              <td class="center">{{$service['StartDate']}}</td>
+              <td class="center">{{$service['FinishDate']}}</td>
               <td class="center">
-                <span class="label label-pill label-success">فعال</span>
+                @if($service['IsActive']==1)
+                  <span class="label label-pill label-success">فعال</span>
+                @else
+                  <span class="label label-pill label-danger">تمام&zwnj;شده</span>
+                @endif
               </td>
               <td class="center">
-                <a href="#" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>
-                <a href="#" class="btn btn-success btn-xs try-sweet-update"><i class="material-icons md-18">update</i></a>
-                <a href="#" class="btn btn-danger btn-xs try-sweet-delete"><i class="material-icons md-18">delete</i></a>
+                <a href="/ChangeInfo?service={{$service['ServiceId']}}" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>
+                <a href="/Renew?service={{$service['ServiceId']}}" class="btn btn-success btn-xs "><i class="material-icons md-18">update</i></a>
+                {{--<a href="#" class="btn btn-danger btn-xs try-sweet-delete"><i class="material-icons md-18">delete</i></a>--}}
               </td>
             </tr>
-            <tr>
-              <td class="center">2</td>
-              <td>
-                <a href="#" data-toggle="modal" data-target="#myModal">
-                  <span>سرویس شماره 2&nbsp;<small>vesta.ir</small></span>
-                </a>
-              </td>
-              <td class="center">34erer34</td>
-              <td class="center">1395/07/01</td>
-              <td class="center">1395/08/01</td>
-              <td class="center">
-                <span class="label label-pill label-danger">تمام&zwnj;شده</span>
-              </td>
-              <td class="center">
-                <a href="#" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>
-                <a href="#" class="btn btn-success btn-xs try-sweet-update"><i class="material-icons md-18">update</i></a>
-                <a href="#" class="btn btn-danger btn-xs try-sweet-delete"><i class="material-icons md-18">delete</i></a>
-              </td>
-            </tr>
-            <tr>
-              <td class="center">2</td>
-              <td>
-                <a href="#" data-toggle="modal" data-target="#myModal">
-                  <span>سرویس شماره 3&nbsp;<small>vesta.ir</small></span>
-                </a>
-              </td>
-              <td class="center">fdgt4tgrg</td>
-              <td class="center">1395/07/01</td>
-              <td class="center">1395/10/01</td>
-              <td class="center">
-                <span class="label label-pill label-danger">تمام&zwnj;شده</span>
-              </td>
-              <td class="center">
-                <a href="#" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>
-                <a href="#" class="btn btn-success btn-xs try-sweet-update"><i class="material-icons md-18">update</i></a>
-                <a href="#" class="btn btn-danger btn-xs try-sweet-delete"><i class="material-icons md-18">delete</i></a>
-              </td>
-            </tr>
+              <?php $count++;?>
+            @endforeach
+            {{--<tr>--}}
+              {{--<td class="center">2</td>--}}
+              {{--<td>--}}
+                {{--<a href="#" data-toggle="modal" data-target="#myModal">--}}
+                  {{--<span>سرویس شماره 2&nbsp;<small>vesta.ir</small></span>--}}
+                {{--</a>--}}
+              {{--</td>--}}
+              {{--<td class="center">34erer34</td>--}}
+              {{--<td class="center">1395/07/01</td>--}}
+              {{--<td class="center">1395/08/01</td>--}}
+              {{--<td class="center">--}}
+                {{--<span class="label label-pill label-danger">تمام&zwnj;شده</span>--}}
+              {{--</td>--}}
+              {{--<td class="center">--}}
+                {{--<a href="#" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>--}}
+                {{--<a href="#" class="btn btn-success btn-xs try-sweet-update"><i class="material-icons md-18">update</i></a>--}}
+                {{--<a href="#" class="btn btn-danger btn-xs try-sweet-delete"><i class="material-icons md-18">delete</i></a>--}}
+              {{--</td>--}}
+            {{--</tr>--}}
             </tbody>
           </table>
         </div>
       </div>
       <!-- // END Table -->
-      <ul class="pager">
-        <li disabled><a href="#">جدیدتر</a></li>
-        <li disabled><a href="#">قدیمی تر</a></li>
-      </ul>
+      {{--<ul class="pager">--}}
+        {{--<li disabled><a href="#">جدیدتر</a></li>--}}
+        {{--<li disabled><a href="#">قدیمی تر</a></li>--}}
+      {{--</ul>--}}
 
     </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="1" role="dialog"  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="myModalLabel"><span>سرویس شماره 3&nbsp;<small>vesta.ir</small></span></h4>
-        </div>
-        <div class="modal-body">
-          <div class="card">
-            <div class="card-block">
-              <h5 class="card-title">تاریخ شروع:</h5>
-              <p class="card-text">1395/07/11</p>
-              <h5 class="card-title">تاریخ پایان:</h5>
-              <p class="card-text">1395/09/11</p>
-              <h5 class="card-title">قیمت:</h5>
-              <p class="card-text">48,000 تومان</p>
-              <h5 class="card-title">کد سرویس:</h5>
-              <p class="card-text">22bjeb2j3b</p>
-              <h5 class="card-title">وضعیت:</h5>
-              <p class="card-text">فعال</p>
-              <h5 class="card-title">تمدید:</h5>
-              <p class="card-text">نشده</p>
+  {{--<div class="modal fade" id="myModal" tabindex="1" role="dialog"  >--}}
+    {{--<div class="modal-dialog" role="document">--}}
+      {{--<div class="modal-content">--}}
+        {{--<div class="modal-header">--}}
+          {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+            {{--<span aria-hidden="true">&times;</span>--}}
+          {{--</button>--}}
+          {{--<h4 class="modal-title" id="myModalLabel"><span>سرویس شماره 3&nbsp;<small>vesta.ir</small></span></h4>--}}
+        {{--</div>--}}
+        {{--<div class="modal-body">--}}
+          {{--<div class="card">--}}
+            {{--<div class="card-block">--}}
+              {{--<h5 class="card-title">تاریخ شروع:</h5>--}}
+              {{--<p class="card-text">1395/07/11</p>--}}
+              {{--<h5 class="card-title">تاریخ پایان:</h5>--}}
+              {{--<p class="card-text">1395/09/11</p>--}}
+              {{--<h5 class="card-title">قیمت:</h5>--}}
+              {{--<p class="card-text">48,000 تومان</p>--}}
+              {{--<h5 class="card-title">کد سرویس:</h5>--}}
+              {{--<p class="card-text">22bjeb2j3b</p>--}}
+              {{--<h5 class="card-title">وضعیت:</h5>--}}
+              {{--<p class="card-text">فعال</p>--}}
+              {{--<h5 class="card-title">تمدید:</h5>--}}
+              {{--<p class="card-text">نشده</p>--}}
 
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">خروج</button>
-        </div>
-      </div>
-    </div>
-  </div>
+            {{--</div>--}}
+          {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="modal-footer">--}}
+          {{--<button type="button" class="btn btn-primary" data-dismiss="modal">خروج</button>--}}
+        {{--</div>--}}
+      {{--</div>--}}
+    {{--</div>--}}
+  {{--</div>--}}
   <!-- End Modal -->
 
   <!-- jQuery -->

@@ -1,6 +1,12 @@
 /**
  * Created by hossein on 24/10/2016.
  */
+
+function disi() {
+    $("#subi").attr('disabled',true);
+    return true;
+}
+
 function CheckPass(){
     var psw=$('#pass').val();
     var repsw=$('#repass').val();

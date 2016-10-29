@@ -5,15 +5,28 @@ namespace App\Http\Controllers;
 use App\Tickets;
 use App\User;
 use Illuminate\Http\Request;
-
+use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
+use DB;
 
 class TicketControl extends Controller
 {
     //Ticket and answering operations here
 
     public function MakeNew(){
+        if(Session::get('Login')!="True")
+        {
+            return redirect('/UserArea');
+        }
+        $username=Session::get('UserName');
+        $id=User::where('UserName',$username)->first()->UserId;
+        $tickets=Tickets::where('UserId',$id)->get();
+        $check=1;
+        foreach($tickets as $ticket){
+            if($ticket['Seen']=="0")
+                $check=0;
+        }
         if(\Session::get('Login')!="True")
         {
             return redirect('/UserArea');
@@ -21,7 +34,7 @@ class TicketControl extends Controller
         // here we Make a new ticket
         // adding to database
         //redirecting to the tickets page and reload
-        return view('Pannel/new-ticket')->with(['UserName'=>\Session::get('UserName')]);
+        return view('Pannel/new-ticket')->with(['UserName'=>\Session::get('UserName'),'New'=>$check]);
     }
     public function MakeTicket(){
         $code=$this->randString(30);
@@ -69,6 +82,7 @@ class TicketControl extends Controller
         $ticket->Ticket_Id=$oticket->Ticket_Id;
         $ticket->Sender_Type=$oticket->Sender_Type;
         $ticket->UserId=$oticket->UserId;
+//        echo $oticket->UserId;
         $ticket->save();
         return redirect('/TicketView?ticket='.$code);
         // add the answer and owner of answer
@@ -76,6 +90,10 @@ class TicketControl extends Controller
         // redirect to admin or user profile
     }
     public function Retrieve(){
+        if(Session::get('Login')!="True")
+        {
+            return redirect('/UserArea');
+        }
         // get the info of current open negotiations and closed ones
         if(\Session::get('Login')!='True'){
             return redirect('/UserArea');
@@ -85,31 +103,50 @@ class TicketControl extends Controller
         $tickets=Tickets::where('UserId',$id)->get();
         $ticketvec=[];
         $i=0;
+        $tickcheck=$tickets;
         foreach($tickets as $ticket)
         {
-            if($ticket['Start']==1 && $ticket['Closed']==0)
+            if($ticket['Start']==1 && $ticket['closed']==0)
             {
+//                echo "shuru<br>".$ticket['Ticket_Id']."<br>";
                 $ticketvec[$i]=$ticket;
+                $ticketvec[$i]['Check']="True";
                 $check=1;
-                foreach($tickets as $thistic){
-                    if($ticket['Ticket_Id']==$thistic['Ticket_Id'] && $thistic['Seen'==0]){
+                foreach($tickcheck as $thistic){
+//                    print_r($thistic);
+//                    echo "<BR>";
+//                    echo "<BR>";
+//                    print_r($ticketvec[$i]);
+//                    echo "<BR>";
+//                    echo "<BR>";
+//                    echo $thistic['Ticket_Id']."<br>";
+                    if( $ticketvec[$i]['Ticket_Id']==$thistic['Ticket_Id'] && $thistic['Seen']==0){
                         $check=0;
+//                        echo "salam<br>";
                         break;
                     }
                 }
                 if($check==0)
                 {
-                    $ticketvec[$i]['Seen']=="False";
+                    $ticketvec[$i]['Check']="False";
                 }
                 else{
-                    $ticketvec[$i]['Seen']=='True';
+                    $ticketvec[$i]['Check']="True";
                 }
                 $i++;
             }
         }
-        //print_r($ticketvec);
+//        print_r($ticketvec);
         // send the view with info
-        return view('Pannel/tickets')->with('Tickets',$ticketvec);
+        $username=Session::get('UserName');
+        $id=User::where('UserName',$username)->first()->UserId;
+        $tickets=Tickets::where('UserId',$id)->get();
+        $check=1;
+        foreach($tickets as $ticket){
+            if($ticket['Seen']=="0")
+                $check=0;
+        }
+        return view('Pannel/tickets')->with(['Tickets'=>$ticketvec,'New'=>$check]);
     }
     public function GetOne(){
         if(\Session::get('Login')!="True")
@@ -119,13 +156,31 @@ class TicketControl extends Controller
         $code=$_GET['ticket'];
         $tickets=Tickets::where('Ticket_Id',$code)->get();
         $this->Readed($code);
-        return view('Pannel/view-ticket')->with(['Tickets'=>$tickets,'UserName'=>\Session::get('UserName'),'Code'=>$code]);
+        $username=Session::get('UserName');
+        $id=User::where('UserName',$username)->first()->UserId;
+        $tickets=Tickets::where('UserId',$id)->get();
+        $check=1;
+        foreach($tickets as $ticket){
+            if($ticket['Seen']=="0")
+                $check=0;
+        }
+        return view('Pannel/view-ticket')->with(['Tickets'=>$tickets,'UserName'=>\Session::get('UserName'),'Code'=>$code,'New'=>$check]);
     }
     public function Readed($code)
     {
         // get the question original info
+        DB::table('Tickets')
+            ->where('Ticket_Id', $code)
+            ->update(['Seen' => true]);
         // mark it read
         // return the correct value to ajax system 
+    }
+    public function Close(){
+        $code=$_GET['ticket'];
+        DB::table('Tickets')
+            ->where('Ticket_Id', $code)
+            ->update(['Closed' => true]);
+        return redirect('/Tickets');
     }
 
 }

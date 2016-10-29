@@ -6,7 +6,7 @@
 .plan .header{margin:30px 0;}
 .best-value .header{margin:40px 0;}
 .plan .header .title{font-size:18px;}
-.plan .header .price h3{margin:0 0 10px; font-weight:700; font-size:30px;}
+.plan .header .price h3{margin:0 0 10px; font-weight:500; font-size:25px;}
 .plans .features-list .features{margin:0; padding:0;}
 .plans .features-list .features li{display:block; list-style:none; padding:15px; border-bottom:1px solid #efefef;}
 .plans .plan:hover .features-list .features li{border-color:#ccc;}

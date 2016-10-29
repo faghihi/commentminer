@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Method extends Model
 {
+
     //
-    protected $table="Plan";
-    protected $primaryKey="PlanId";
+    protected $table="Method";
     public $timestamps = false;
     public function setUpdatedAt($value)
     {

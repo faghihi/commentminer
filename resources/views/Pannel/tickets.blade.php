@@ -31,7 +31,7 @@
     <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
     <!-- Brand -->
-    <a href="index.blade.php" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+    <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
 
     <!-- Menu -->
     <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="dropdown-item email-item">
-                    <a class="nav-link" href="index.blade.php">
+                    <a class="nav-link" href="/Pannel">
               <span class="media">
 					<span class="media-left media-middle">
 						<i class="material-icons">mail</i>
@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="dropdown-item email-item">
-                    <a class="nav-link" href="index.blade.php">
+                    <a class="nav-link" href="/Pannel">
               <span class="media">
 					<span class="media-left media-middle">
 						<i class="material-icons">mail</i>
@@ -95,9 +95,9 @@
                 <i class="material-icons md-36">account_circle</i>
             </a>
             <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-                <a class="dropdown-item" href="edit.blade.php"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
+                <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
                 <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-                <a class="dropdown-item" href="#">خروج</a>
+                <a class="dropdown-item" href="/SignOut">خروج</a>
             </div>
         </li>
         <!-- // END User dropdown -->
@@ -111,28 +111,29 @@
 <div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
     <ul class="sidebar-menu">
         <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="index.blade.php">
+            <a class="sidebar-menu-button" href="/Pannel">
                 <i class="sidebar-menu-icon material-icons">home</i> داشبورد
             </a>
         </li>
         <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="plans-prices.blade.php">
+            <a class="sidebar-menu-button" href="/Plans">
                 <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
             </a>
         </li>
         <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="invoice.blade.php">
+            <a class="sidebar-menu-button" href="/Services">
                 <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
             </a>
         </li>
         <li class="sidebar-menu-item active">
             <a class="sidebar-menu-button" href="/Tickets">
                 <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-                <span class="sidebar-menu-label tooltip-right label label-primary">2</span>
-            </a>
+                @if($New==0)
+                    <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
+                @endif            </a>
         </li>
         <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="edit.blade.php">
+            <a class="sidebar-menu-button" href="/Profile">
                 <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
             </a>
         </li>
@@ -145,7 +146,7 @@
     <div class="container-fluid">
 
       <ol class="breadcrumb">
-        <li><a href="index.blade.php">صفحه اصلی</a></li>
+        <li><a href="/Pannel">صفحه اصلی</a></li>
         <li class="active">تیکت</li>
       </ol>
       <div class="row m-b-1">
@@ -218,7 +219,7 @@
                         <div class="media-right media-middle right">
                             <div style="width:100px" class="text-muted center">
                                 <small><span class="text-muted">در جریان</span>:<BR>
-                                    @if($ticket['Seen']=="True")
+                                    @if($ticket['Check']=="False")
                                         <span style="color:red">دیده نشده</span></small>
                                     @else
                                         <span>دیده شده</span></small>

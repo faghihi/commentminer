@@ -3241,8 +3241,8 @@ a.label:focus, a.label:hover {
     color: inherit; }
 
 .alert-success {
-  background-color: #fefefe;
-  border-color: #fefefe;
+  background-color: #dff0d8;
+  border-color: #dff0d8;
   color: #459a49; }
   .alert-success hr {
     border-top-color: #ecf7ed; }
