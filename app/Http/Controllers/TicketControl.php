@@ -146,6 +146,13 @@ class TicketControl extends Controller
             if($ticket['Seen']=="0")
                 $check=0;
         }
+        usort($ticketvec,function($a, $b)
+        {
+            if ($a["check"] == $b["check"]) {
+                return -1;
+            }
+            return ($a["check"] < $b["check"]) ? -1 : 1;
+        });
         return view('Pannel/tickets')->with(['Tickets'=>$ticketvec,'New'=>$check]);
     }
     public function GetOne(){
@@ -153,9 +160,6 @@ class TicketControl extends Controller
         {
             return redirect('/UserArea');
         }
-        $code=$_GET['ticket'];
-        $tickets=Tickets::where('Ticket_Id',$code)->get();
-        $this->Readed($code);
         $username=Session::get('UserName');
         $id=User::where('UserName',$username)->first()->UserId;
         $tickets=Tickets::where('UserId',$id)->get();
@@ -164,6 +168,11 @@ class TicketControl extends Controller
             if($ticket['Seen']=="0")
                 $check=0;
         }
+        $code=$_GET['ticket'];
+        $tickets=Tickets::where('Ticket_Id',$code)->get();
+        $this->Readed($code);
+
+        //echo $code;
         return view('Pannel/view-ticket')->with(['Tickets'=>$tickets,'UserName'=>\Session::get('UserName'),'Code'=>$code,'New'=>$check]);
     }
     public function Readed($code)

@@ -24,15 +24,6 @@
     <div class="col-sm-10 col-sm-push-1 col-md-6 col-md-push-3 col-lg-6 col-lg-push-3">
       <h2 class="text-primary center m-a-2">
         <img src="assets/images/icons/icon.png" width="40"> <span class="icon-text">کامنت ماینر</span>
-        @if($error=="Activate")
-          <p class="text-muted-light">اکانت شما فعال شده است از فرم زیر وارد شوید </p>
-        @endif
-        @if($error=="login")
-          <p class="text-muted-light">رمز یا ایمیل وارد شده صحیح نمیباشد</p>
-        @endif
-        @if($error=="SignUp")
-          <p class="text-muted-light">ایمیل فعال سازی برای شما ارسال شد </p>
-        @endif
       </h2>
       <div class="card-group" dir="rtl">
         <div class="card bg-transparent">
@@ -58,6 +49,15 @@
                   <i class="material-icons">lock</i>
                 </button>
               </div>
+              <br><br>
+              @if($error=="login")
+                <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>خطا !!</strong>رمز یا ایمیل وارد شده صحیح نمیباشد .
+                </div>
+              @endif
             </form>
           </div>
         </div>
@@ -84,12 +84,32 @@
                 <input id="repass" type="password" name="RePassword" class="form-control" placeholder="تکرار رمز عبور">
               </div>
               <button type="submit" class="btn btn-primary btn-rounded">ثبت&zwnj;نام</button>
+              <br><br>
+              @if($error=="SignUp")
+                <div class="alert alert-success alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>ایمیل ارسال شد !</strong> جهت فعال سازی به ایمیل خود مراجعه نمایید
+                </div>
+              @endif
             </form>
           </div>
         </div>
       </div>
+      <br><br>
+      @if($error=="Activate")
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <strong>فعال شد!</strong>اکانت شما با موفقیت فعال شد میتوانید از فرم بالا وارد شوید
+        </div>
+      @endif
     </div>
   </div>
+
+
 
   <!-- jQuery -->
   <script src="assets/vendor/jquery.min.js"></script>

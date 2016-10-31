@@ -32,10 +32,10 @@
     <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
     <!-- Brand -->
-    <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+    <a href="/Pannel"  class="navbar-brand first-child-md">کامنت ماینر</a>
 
     <!-- Menu -->
-    <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
+    <ul style="float: left" class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
 
         <!-- Notifications dropdown -->
         <!--<li class="nav-item dropdown">
@@ -90,7 +90,7 @@
         <!-- // END Notifications dropdown -->
 
         <!-- User dropdown -->
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" >
             <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
                 <!--<img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">-->
                 <i class="material-icons md-36">account_circle</i>

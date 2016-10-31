@@ -31,7 +31,7 @@
   <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
   <!-- Brand -->
-  <a href="index.html" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+  <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
 
   <!-- Menu -->
   <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -43,9 +43,9 @@
         <i class="material-icons md-36">account_circle</i>
       </a>
       <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-        <a class="dropdown-item" href="edit.html"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
+        <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
         <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-        <a class="dropdown-item" href="#">خروج</a>
+        <a class="dropdown-item" href="/SingOut">خروج</a>
       </div>
     </li>
     <!-- // END User dropdown -->
@@ -59,27 +59,27 @@
 <div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
   <ul class="sidebar-menu">
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="index.html">
+      <a class="sidebar-menu-button" href="/Pannel">
         <i class="sidebar-menu-icon material-icons">home</i> داشبورد
       </a>
     </li>
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="plans-prices.html">
+      <a class="sidebar-menu-button" href="/Plans">
         <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
       </a>
     </li>
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="invoice.html">
+      <a class="sidebar-menu-button" href="/Services">
         <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
       </a>
     </li>
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="tickets.html">
+      <a class="sidebar-menu-button" href="/Tickets">
         <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
       </a>
     </li>
     <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="edit.html">
+      <a class="sidebar-menu-button" href="/Profile">
         <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
       </a>
     </li>
@@ -92,16 +92,10 @@
     <div class="container-fluid">
 
       <ol class="breadcrumb">
-        <li><a href="index.html">صفحه اصلی</a></li>
+        <li><a href="/Pannel">صفحه اصلی</a></li>
         <li class="active">پیام</li>
       </ol>
       <div class="card">
-        <div class=" card-block center">
-          <a href="/Pannel" class="btn btn-white">
-            <i class="material-icons">home</i>
-            <span class="icon-text">بازگشت به صفحه ی اصلی</span>
-          </a>
-        </div>
         <div class="card-block">
           <div class="row m-b-2">
             <div class="col-md-12">
@@ -109,13 +103,41 @@
                 <div class="card card-primary center">
                   <div class="card-block">
                     <p>{{$Content}}</p>
+                      <a href="/Pannel" class="btn btn-white">
+                        <i class="material-icons">home</i>
+                        <span class="icon-text">بازگشت به صفحه ی اصلی</span>
+                      </a>
                   </div>
                 </div>
               @endif
+                @if($Type=="bank")
+                  <div class="card card-success center">
+                    <div class="card-block">
+                      <p>آیا تایید میکنید که برای پرداخت خرید سرویس به بانک انتقال پیدا کنید ؟!</p>
+                      <a href="/BuyService?plan={{$Content}}" class="btn btn-white">
+                        <span class="icon-text">انتقال به بانک</span>
+                      </a>
+                    </div>
+                  </div>
+                @endif
+                @if($Type=="bankre")
+                  <div class="card card-success center">
+                    <div class="card-block">
+                      <p>آیا تایید میکنید که برای پرداخت  تمدید سرویس به بانک انتقال پیدا کنید ؟!</p>
+                      <a href="/Renew?service={{$Content}}" class="btn btn-white">
+                        <span class="icon-text">انتقال به بانک</span>
+                      </a>
+                    </div>
+                  </div>
+                @endif
                 @if($Type=="payfalse")
                   <div class="card card-warning center">
                     <div class="card-block">
                       <p>{{$Content}}</p>
+                      <a href="/Pannel" class="btn btn-white">
+                        <i class="material-icons">home</i>
+                        <span class="icon-text">بازگشت به صفحه ی اصلی</span>
+                      </a>
                     </div>
                   </div>
                 @endif

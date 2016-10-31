@@ -1,6 +1,9 @@
 /**
  * Created by hossein on 24/10/2016.
  */
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
 function disi() {
     $("#subi").attr('disabled',true);

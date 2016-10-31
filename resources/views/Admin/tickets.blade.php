@@ -31,7 +31,7 @@
     <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
     <!-- Brand -->
-    <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
+    <a href="/AdminPannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
 
     <!-- Menu -->
     <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -95,8 +95,6 @@
                 <i class="material-icons md-36">account_circle</i>
             </a>
             <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-                <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
-                <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
                 <a class="dropdown-item" href="/SignOut">خروج</a>
             </div>
         </li>
@@ -110,32 +108,12 @@
 <!-- Sidebar -->
 <div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
     <ul class="sidebar-menu">
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Pannel">
-                <i class="sidebar-menu-icon material-icons">home</i> داشبورد
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Plans">
-                <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Services">
-                <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
-            </a>
-        </li>
         <li class="sidebar-menu-item active">
-            <a class="sidebar-menu-button" href="/Tickets">
+            <a class="sidebar-menu-button" href="/AdminPannel">
                 <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
                 @if($New==0)
                     <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
                 @endif            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Profile">
-                <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
-            </a>
         </li>
     </ul>
 </div>
@@ -146,7 +124,6 @@
     <div class="container-fluid">
 
       <ol class="breadcrumb">
-        <li><a href="/Pannel">صفحه اصلی</a></li>
         <li class="active">تیکت</li>
       </ol>
       <div class="row m-b-1">
@@ -210,10 +187,10 @@
                             <img src="assets/images/people/50/guy-6.jpg" alt="" class="img-circle">
                         </div>
                         <div class="media-body media-middle">
-                            <h4 class="card-title m-b-0"><a href="/TicketView?ticket={{$ticket['Ticket_Id']}}">{{$ticket['Subject']}}</a></h4>
+                            <h4 class="card-title m-b-0"><a href="/AdminTicketView?ticket={{$ticket['Ticket_Id']}}">{{$ticket['Subject']}}</a></h4>
                             <small> <span class="text-muted">ایجاد شده در</span>: <span>{{$ticket['Date']}}</span></small>
                             <small class="m-l-1">
-                                <span class="text-muted">بخش</span>: <a href="#">پشتیبانی</a>
+                                <span class="text-muted">کاربر</span>: <a href="#">{{$ticket['UserInfo']['UserName']}}</a>
                             </small>
                         </div>
                         <div class="media-right media-middle right">

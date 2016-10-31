@@ -53,12 +53,16 @@ class UserControl extends Controller
         $subject=Input::get('subject');
         $email=Input::get('email');
         $message=Input::get('message');
+        $Contacts=['Name'=>$name,'Subject'=>$subject,'Email'=>$email,'Message'=>$message];
         $contact=new Contact();
         $contact->Name=$name;
         $contact->Email=$email;
         $contact->Subject=$subject;
         $contact->message=$message;
         $check=$contact->save();
+        $WhereToSend='h.faghihi15@gmail.com';
+        $this->html_email_($Contacts,$WhereToSend,'ContactEmail','پیام جدید ارتباط با ما');
+
     }
     public function Subscribe(){
         $email=Input::get('email');
@@ -133,6 +137,13 @@ class UserControl extends Controller
             return redirect('/UserArea?error=save');
         }
         
+    }
+    public function html_email_($data,$Email,$page,$subject){
+        Mail::send($page, $data, function($message) use ($Email,$subject) {
+            $message->to($Email, 'کامنت ماینر')->subject
+            ($subject);
+            $message->from('h.faghihi15@gmail.com','کامنت ماینر');
+        });
     }
     public function html_email_Forgot($Code,$Email){
         $data = array('code'=>"localhost:8000/PassPage?code=".$Code);

@@ -48,8 +48,9 @@ $(function() {
   		$("#send").attr("value", "در حال پردازش ...");
   		$(form).ajaxSubmit({
   			success: function(responseText, statusText, xhr, $form) {
-  				$(form).slideUp("fast");
-  				$("#response").html(responseText).hide().slideDown("fast");
+  				 $(form).slideUp("fast");
+  				// $("#response").html(responseText).hide().slideDown("fast");
+				$("#response").show();
   			}
   		});
   		return false;
@@ -94,6 +95,7 @@ $(function() {
   			success: function(responseText, statusText, xhr) {
 				$(form).slideUp("fast");
   				$("#subscriptionResponse").html(responseText).hide().slideDown("fast");
+
   			}
   		});
   		return false;

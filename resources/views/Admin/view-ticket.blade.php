@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="assets/images/icons/icon.ico">
-  <title>تیکت های فعال </title>
+  <title>تیکت شماره ی {{$Tickets[0]['Ticket_Id']}}</title>
 
   <!-- Material Design Icons  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,6 +16,13 @@
 
   <!-- App CSS -->
   <link type="text/css" href="assets/css/style.min.css" rel="stylesheet">
+
+  <!-- Required by summernote -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Summernote WYSIWYG -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css">
+  <link rel="stylesheet" href="examples/css/summernote.min.css">
 
   <!-- Bootstrap rtl -->
   <link rel="stylesheet" href="assets/vendor/bootstrap-rtl-3.3.4/dist/css/bootstrap-rtl.min.css">
@@ -31,7 +38,7 @@
     <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
     <!-- Brand -->
-    <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
+    <a href="/AdminPannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
 
     <!-- Menu -->
     <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -95,8 +102,6 @@
                 <i class="material-icons md-36">account_circle</i>
             </a>
             <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-                <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
-                <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
                 <a class="dropdown-item" href="/SignOut">خروج</a>
             </div>
         </li>
@@ -110,32 +115,12 @@
 <!-- Sidebar -->
 <div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
     <ul class="sidebar-menu">
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Pannel">
-                <i class="sidebar-menu-icon material-icons">home</i> داشبورد
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Plans">
-                <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Services">
-                <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
-            </a>
-        </li>
         <li class="sidebar-menu-item active">
-            <a class="sidebar-menu-button" href="/Tickets">
+            <a class="sidebar-menu-button" href="/AdminPannel">
                 <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
                 @if($New==0)
                     <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
                 @endif            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Profile">
-                <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
-            </a>
         </li>
     </ul>
 </div>
@@ -146,102 +131,88 @@
     <div class="container-fluid">
 
       <ol class="breadcrumb">
-        <li><a href="/Pannel">صفحه اصلی</a></li>
-        <li class="active">تیکت</li>
+        <li><a href="/AdminPannel">تیکت</a></li>
+        <li class="active">پاسخ</li>
       </ol>
-      <div class="row m-b-1">
-        <div class="col-md-6">
-          <div class="card card-stats-primary">
-            <div class="card-block">
-              <div class="media">
-                <div class="media-left media-middle">
-                  <i class="material-icons text-primary md-36">query_builder</i>
-                </div>
-                <div class="media-body media-middle">
-                  <h4 class="card-title m-b-0">
-                    <strong class="text-primary">{{count($Tickets)}}</strong> تیکت های فعال
-                  </h4>
-                </div>
+      <div class="card card-user-cover">
+        <div class="card">
+          <div class="card-block">
+            <div class="media m-b-1">
+              <div class="media-left">
+                <a href="#">
+                  <img src="assets/images/people/110/guy-8.jpg" alt="avatar" class="img-circle" width="45">
+                </a>
               </div>
+              <div class="media-body media-middle">
+                <div><a href="#">{{$UserName}}</a><br><span>{{$Tickets[0]['Subject']}}</span></div>
+                <small class="text-muted">{{$Tickets[0]['Date']}}</small>
+              </div>
+              <div class="media-left media-middle text-md-left">
+                <div class="btn-group-vertical">
+                  <a href="#hiddenReply"><button id="showReplyBar" type="button" class="btn btn-white btn-xs"><i class="material-icons md-36">reply</i>پاسخ</button></a>
+                  <a href="/AdminCloseItem?ticket={{$Code}}"><button type="button" class="btn btn-white btn-xs text-success"><i class="material-icons md-36">done_all</i>بستن</button></a>
+                </div>
             </div>
+            <p class="m-a-0">{{$Tickets[0]['Text']}}</p>
+            <br>
           </div>
-        </div>
-        {{--<div class="col-md-6">--}}
-          {{--<div class="card card-stats-success">--}}
-            {{--<div class="card-block">--}}
-              {{--<div class="media">--}}
-                {{--<div class="media-left media-middle">--}}
-                  {{--<i class="material-icons text-success md-36">done_all</i>--}}
-                {{--</div>--}}
-                {{--<div class="media-body media-middle">--}}
-                  {{--<h4 class="card-title m-b-0">--}}
-                    {{--<strong class="text-success">400</strong> تیکت های بسته شده--}}
-                  {{--</h4>--}}
-                {{--</div>--}}
-              {{--</div>--}}
-            {{--</div>--}}
-          {{--</div>--}}
-        {{--</div>--}}
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-              <h3>تیکت های اخیر <a href="/NewTicket" class="btn btn-primary btn-rounded-deep m-l-1" >جدید <i class="material-icons">add</i></a></h3>
+          <div class="small bg-faded" style="padding:0.3rem 1rem;">
+            {{--<a href="#"><i class="fa fa-comments-o"></i> مشاهده همه</a>--}}
+            {{--<span class="text-muted">10 پاسخ</span>--}}
           </div>
-        {{--<div class="col-md-6 text-md-left">--}}
-          {{--<div class="form-group">--}}
-            {{--<label class="m-r-1">فیلتر:</label>--}}
-            {{--<select class="c-select">--}}
-              {{--<option selected>تازه ترین ها</option>--}}
-              {{--<option value="1">تاریخ ایجاد</option>--}}
-              {{--<option value="2">اولویت</option>--}}
-              {{--<option value="3">بسته شده ها</option>--}}
-            {{--</select>--}}
-          {{--</div>--}}
-        {{--</div>--}}
-
-      </div>
-
-      <div class="card">
-          <ul class="list-group list-group-fit">
+          <ul class="list-group list-unstyled">
+              <?php $i=0 ?>
               @foreach($Tickets as $ticket)
-                <li class="list-group-item">
-                    <div class="media">
-                        <div class="media-left media-middle hidden-sm-down">
-                            <img src="assets/images/people/50/guy-6.jpg" alt="" class="img-circle">
-                        </div>
-                        <div class="media-body media-middle">
-                            <h4 class="card-title m-b-0"><a href="/TicketView?ticket={{$ticket['Ticket_Id']}}">{{$ticket['Subject']}}</a></h4>
-                            <small> <span class="text-muted">ایجاد شده در</span>: <span>{{$ticket['Date']}}</span></small>
-                            <small class="m-l-1">
-                                <span class="text-muted">بخش</span>: <a href="#">پشتیبانی</a>
-                            </small>
-                        </div>
-                        <div class="media-right media-middle right">
-                            <div style="width:100px" class="text-muted center">
-                                <small><span class="text-muted">در جریان</span>:<BR>
-                                    @if($ticket['Check']=="False")
-                                        <span style="color:red">دیده نشده</span></small>
+                 @if($i==0)
+                     <?php $i++?>
+                      @else
+                        <li class="list-group-item media m-a-1">
+                          <div class="media-left">
+                            <a href="#">
+                                @if($ticket['Sender_Type']!='1')
+                                    <i class="material-icons md-48 ">account_circle</i>
+                                @endif
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <a href="" class="comment-author">
+                                @if($ticket['Sender_Type']=='1')
+                                    پشتیبانی
                                     @else
-                                        <span>دیده شده</span></small>
+                                    {{$UserName}}
                                     @endif
-                            </div>
-
-                        </div>
-                    </div>
-                </li>
-                  @endforeach
-            </ul>
+                            </a><br>
+                            <p>{{$ticket['Text']}}</p>
+                            <div class="small text-muted">{{$ticket['Date']}}</div>
+                          </div>
+                        </li>
+                      @endif
+              @endforeach
+            <li id="hiddenReply" class="m-a-1">
+              <form action="/AdminAnswerTicket?ticket={{$Code}}" method="post">
+                <div class="form-group">
+                    <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                    <textarea name="Text" class="form-control" placeholder="..." rows="6"></textarea>
+                  <button type="submit" class="btn btn-primary btn-block" type="button"><i class="material-icons md-36">comment</i></button>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
       </div>
-      {{--<ul class="pager">--}}
-          {{--<li><a href="#">جدیدتر</a></li>--}}
-          {{--<li><a href="#">قدیمی تر</a></li>--}}
-      {{--</ul>--}}
     </div>
   </div>
 
   <!-- jQuery -->
   <script src="assets/vendor/jquery.min.js"></script>
-
+  <script>
+    $(document).ready(function () {
+      $('#hiddenReply').hide();
+      $('#showReplyBar').click(function () {
+        $('#hiddenReply').show();
+      });
+    });
+  </script>
   <!-- Bootstrap -->
   <script src="assets/vendor/tether.min.js"></script>
   <script src="assets/vendor/bootstrap-rtl-3.3.4/dist/js/bootstrap.min.js"></script>
@@ -253,6 +224,9 @@
   <!-- App JS -->
   <script src="assets/js/main.min.js"></script>
 
+  <!-- Summer note -->
+  <script src="assets/vendor/summernote.min.js"></script>
+  <script src="assets/js/summernote.js"></script>
 </body>
 
 </html>

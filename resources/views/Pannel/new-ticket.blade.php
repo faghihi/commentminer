@@ -38,7 +38,7 @@
   <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
   <!-- Brand -->
-  <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+  <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
 
   <!-- Menu -->
   <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">

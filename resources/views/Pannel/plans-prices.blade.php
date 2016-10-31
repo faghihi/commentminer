@@ -32,7 +32,7 @@
     <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
     <!-- Brand -->
-    <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+    <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
 
     <!-- Menu -->
     <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -165,11 +165,13 @@
                                     <div class="title"> {{$plan['Name']}} </div>
                                     <BR>
                                     <div class="price">
-                                        <h3>{{$plan['Price']}} تومان<span></span>/{{$plan['Period']/30}}ماه</h3>
+                                        <h3>{{$plan['Price']}} تومان</h3>
                                         <small>{{$plan['Desc']}}</small> </div>
                                 </div>
                                 <div class="features-list">
                                     <ul class="features">
+                                        <li>تعداد درخواست ها :  {{$plan['MaxCount']}}</li>
+                                        <li>{{$plan['Period']/30}}ماه</li>
                                         <?php
                                             $count=0;
                                             if(isset($plan['Fi'])){
@@ -190,7 +192,7 @@
 
                                     </ul>
                                 </div>
-                                <footer><a href="/BuyService?plan={{$plan['PlanId']}}" class="btn btn-primary btn-lg">خرید</a></footer>
+                                <footer><a href="/bankmessage?plan={{$plan['PlanId']}}" class="btn btn-primary btn-lg">خرید</a></footer>
                             </div>
                             @if($i%3==2)
                                 </div>

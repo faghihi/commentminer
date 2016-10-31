@@ -162,6 +162,7 @@ class ServiceControl extends Controller
             $plans[$i]['Desc']=$plan->Desc;
             $plans[$i]['PlanId']=$plan->PlanId;
             $plans[$i]['Period']=$plan->Period;
+            $plans[$i]['MaxCount']=$plan->MaxCount;
             $numbers=PlanMethod::where('PlanId',$plan->PlanId)->get();
             $j=0;
             $max=0;
@@ -307,13 +308,13 @@ class ServiceControl extends Controller
             } else {
                 ;
                 $ref = $result->Status;
-                return redirect("/buyfalse/$ref");
+                return redirect("/buyfalse");
             }
 
         } else {
 
             $ref = 'شما انتقال را لغو کرده اید.';
-            return redirect("/buyfalse/$ref");
+            return redirect("/buyfalse");
         }
     }
 

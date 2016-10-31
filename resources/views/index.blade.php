@@ -946,7 +946,14 @@
 						</div>
 						<input type="submit" class="btn btn-primary btn-xl btn-block" id="send" value="ارسال پیام">
 					</form>
-					<div id="response"></div>
+					<div id="response" style="display: none;">
+						<div class="alert alert-success alert-dismissible fade in" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<strong>انجام شد!</strong>پیام شما ارسال شده است و بدان رسیدگی خواهد شد
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

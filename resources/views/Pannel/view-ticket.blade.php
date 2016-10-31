@@ -38,7 +38,7 @@
     <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
     <!-- Brand -->
-    <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+    <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
 
     <!-- Menu -->
     <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -192,12 +192,14 @@
                         <li class="list-group-item media m-a-1">
                           <div class="media-left">
                             <a href="#">
-                              <i class="material-icons md-48 ">account_circle</i>
+                                @if($ticket['Sender_Type']!='1')
+                                    <i class="material-icons md-48 ">account_circle</i>
+                                @endif
                             </a>
                           </div>
                           <div class="media-body">
                             <a href="" class="comment-author">
-                                @if($ticket['Sender_Type'==1])
+                                @if($ticket['Sender_Type']=='1')
                                     پشتیبانی
                                     @else
                                     {{$UserName}}

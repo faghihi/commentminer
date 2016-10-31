@@ -33,7 +33,7 @@
   <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
 
   <!-- Brand -->
-  <a href="/Pannel" style="float: left" class="navbar-brand first-child-md">Comment miner</a>
+  <a href="/Pannel" class="navbar-brand first-child-md">Comment miner</a>
 
   <!-- Menu -->
   <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
@@ -155,13 +155,13 @@
 
       <h2 class="center">سرویس&zwnj;ها</h2>
       <p class="center lead">مشاهده و تغییر سرویس های خریداری شده.</p>
-      <div class="alert  alert-dismissible fade in" role="alert">
+      <div class="alert  alert-info alert-dismissible fade in" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <strong>راهنمایی</strong>
         <p>برای اطلاع از جزییات سرویس روی نام آن کلیک کنید.</p>
-        <p><i class="material-icons md-18">autorenew</i> تعویض کد سرویس</p>
+        <p><i class="material-icons md-18">autorenew</i> تغییر شناسه سرویس</p>
         <p><i class="material-icons md-18">update</i>تمدید سرویس</p>
         {{--<p><i class="material-icons md-18">delete</i>حذف سرویس</p>--}}
       </div>
@@ -230,8 +230,8 @@
                 @endif
               </td>
               <td class="center">
-                <a href="/ChangeInfo?service={{$service['ServiceId']}}" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>
-                <a href="/Renew?service={{$service['ServiceId']}}" class="btn btn-success btn-xs "><i class="material-icons md-18">update</i></a>
+                <a href="/ChangeInfo?service={{$service['ServiceId']}}"  data-toggle="tooltip" title="تغییر شناسه" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>
+                <a href="/bankremessage?service={{$service['ServiceId']}}"  data-toggle="tooltip" title="تمدید سرویس" class="btn btn-success btn-xs "><i class="material-icons md-18">update</i></a>
                 {{--<a href="#" class="btn btn-danger btn-xs try-sweet-delete"><i class="material-icons md-18">delete</i></a>--}}
               </td>
             </tr>
@@ -319,7 +319,7 @@
   <!-- App JS -->
   <script src="assets/js/main.min.js"></script>
   <script src="assets/js/sweetalert.js"></script>
-
+  <script src="assets/js/custom.js"></script>
   <!-- Vendor JS -->
   <script src="assets/vendor/sweetalert.min.js"></script>
 

@@ -55,3 +55,20 @@ Route::get('/buyfalse',function (){
     $content="خرید شما انجام نشد اگر پولی از حسابتان کسر شده است تا ۴۸ ساعت آینده بازگشت داده خواهد شد .";
     return view('message')->with(['Content'=>$content,'Type'=>'payfalse']);
 });
+Route::get('/bankmessage',function (){
+    $content=$_GET['plan'];
+    return view('message')->with(['Content'=>$content,'Type'=>'bank']);
+});
+Route::get('/bankremessage',function (){
+    $content=$_GET['service'];
+    return view('message')->with(['Content'=>$content,'Type'=>'bankre']);
+});
+
+#Admin Rules
+Route::get('/Admin','AdminControl@GetLogin');
+Route::post('/AdminLogin','AdminControl@AdminLogin');
+Route::get('/AdminPannel','AdminControl@GetPannel');
+Route::get('/AdminTicketView','AdminControl@Ticket');
+Route::post('/AdminAnswerTicket','AdminControl@AnswerTicket');
+Route::get('/AdminCloseItem','AdminControl@Close');
+
