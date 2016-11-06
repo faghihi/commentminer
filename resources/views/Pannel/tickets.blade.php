@@ -23,122 +23,11 @@
 </head>
 
 <body class="layout-container ls-top-navbar si-r3-md-up">
-
 <!-- Navbar -->
-<nav class="navbar navbar-dark bg-primary navbar-full navbar-fixed-top">
-
-    <!-- Toggle sidebar -->
-    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
-
-    <!-- Brand -->
-    <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
-
-    <!-- Menu -->
-    <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
-
-        <!-- Notifications dropdown -->
-        <!--<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-caret="false" data-toggle="dropdown" role="button" aria-haspopup="false"><i class="material-icons email">mail_outline</i></a>
-            <ul class="dropdown-menu dropdown-menu-right right notifications" aria-labelledby="Preview">
-                <li class="dropdown-title">پیام&zwnj;ها</li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="#">
-              <span class="media">
-					<span class="media-left media-middle"><i class="material-icons">mail</i></span>
-              <span class="media-body media-middle">
-						<small class="pull-xs-left text-muted">12:20</small>
-						<strong>موضوع 1</strong>
-						Enhance your website with
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="/Pannel">
-              <span class="media">
-					<span class="media-left media-middle">
-						<i class="material-icons">mail</i>
-					</span>
-              <span class="media-body media-middle">
-						<small class="text-muted pull-xs-left">30 min</small>
-						<strong>موضوع 2</strong>
-						Partnership proposal
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="/Pannel">
-              <span class="media">
-					<span class="media-left media-middle">
-						<i class="material-icons">mail</i>
-					</span>
-              <span class="media-body media-middle">
-						<small class="text-muted pull-xs-left">1 hr</small>
-						<strong>موضوع 3</strong>
-						UI Design
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-action center">
-                    <a href="email.html">مشاهده&zwnj;ی همه</a>
-                </li>
-            </ul>
-        </li>-->
-        <!-- // END Notifications dropdown -->
-
-        <!-- User dropdown -->
-        <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
-                <!--<img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">-->
-                <i class="material-icons md-36">account_circle</i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-                <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
-                <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-                <a class="dropdown-item" href="/SignOut">خروج</a>
-            </div>
-        </li>
-        <!-- // END User dropdown -->
-
-    </ul>
-    <!-- // END Menu -->
-
-</nav>
+@include('Pannel/nav')
 <!-- // END Navbar -->
 <!-- Sidebar -->
-<div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
-    <ul class="sidebar-menu">
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Pannel">
-                <i class="sidebar-menu-icon material-icons">home</i> داشبورد
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Plans">
-                <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Services">
-                <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
-            </a>
-        </li>
-        <li class="sidebar-menu-item active">
-            <a class="sidebar-menu-button" href="/Tickets">
-                <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-                @if($New==0)
-                    <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
-                @endif            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Profile">
-                <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
-            </a>
-        </li>
-    </ul>
-</div>
+@include('Pannel/Sidebar',array('active'=>'ticket'))
 <!-- // END Sidebar -->
 
   <!-- Content -->
@@ -149,6 +38,16 @@
         <li><a href="/Pannel">صفحه اصلی</a></li>
         <li class="active">تیکت</li>
       </ol>
+        <?php
+            $count_open=0;
+            $count_close=0;
+            foreach($Tickets as $ticket_one){
+                if($ticket_one['Closed']==0)
+                    $count_open++;
+                else
+                    $count_close++;
+            }
+        ?>
       <div class="row m-b-1">
         <div class="col-md-6">
           <div class="card card-stats-primary">
@@ -159,52 +58,57 @@
                 </div>
                 <div class="media-body media-middle">
                   <h4 class="card-title m-b-0">
-                    <strong class="text-primary">{{count($Tickets)}}</strong> تیکت های فعال
+                    <strong class="text-primary">{{$count_open}}</strong> تیکت های فعال
                   </h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {{--<div class="col-md-6">--}}
-          {{--<div class="card card-stats-success">--}}
-            {{--<div class="card-block">--}}
-              {{--<div class="media">--}}
-                {{--<div class="media-left media-middle">--}}
-                  {{--<i class="material-icons text-success md-36">done_all</i>--}}
-                {{--</div>--}}
-                {{--<div class="media-body media-middle">--}}
-                  {{--<h4 class="card-title m-b-0">--}}
-                    {{--<strong class="text-success">400</strong> تیکت های بسته شده--}}
-                  {{--</h4>--}}
-                {{--</div>--}}
-              {{--</div>--}}
-            {{--</div>--}}
-          {{--</div>--}}
-        {{--</div>--}}
+        <div class="col-md-6">
+          <div class="card card-stats-success">
+            <div class="card-block">
+              <div class="media">
+                <div class="media-left media-middle">
+                  <i class="material-icons text-success md-36">done_all</i>
+                </div>
+                <div class="media-body media-middle">
+                  <h4 class="card-title m-b-0">
+                    <strong class="text-success">{{$count_close}}</strong> تیکت های بسته شده
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-6">
               <h3>تیکت های اخیر <a href="/NewTicket" class="btn btn-primary btn-rounded-deep m-l-1" >جدید <i class="material-icons">add</i></a></h3>
           </div>
-        {{--<div class="col-md-6 text-md-left">--}}
-          {{--<div class="form-group">--}}
-            {{--<label class="m-r-1">فیلتر:</label>--}}
-            {{--<select class="c-select">--}}
-              {{--<option selected>تازه ترین ها</option>--}}
-              {{--<option value="1">تاریخ ایجاد</option>--}}
-              {{--<option value="2">اولویت</option>--}}
-              {{--<option value="3">بسته شده ها</option>--}}
-            {{--</select>--}}
-          {{--</div>--}}
-        {{--</div>--}}
+        <div class="col-md-6 text-md-left">
+          <div class="form-group">
+            <label class="m-r-1">فیلتر:</label>
+            <select class="c-select">
+              <option value="0" selected>باز ها </option>
+              <option value="1">بسته ها </option>
+              <option value="2">همه</option>
+            </select>
+          </div>
+        </div>
 
       </div>
 
       <div class="card">
           <ul class="list-group list-group-fit">
               @foreach($Tickets as $ticket)
-                <li class="list-group-item">
+
+                  @if($ticket['Closed']==1)
+                      <?php $class='Closed_one' ?>
+                  @else
+                      <?php $class='Open_one' ?>
+                  @endif
+                <li class="list-group-item {{$class}}">
                     <div class="media">
                         <div class="media-left media-middle hidden-sm-down">
                             <img src="assets/images/people/50/guy-6.jpg" alt="" class="img-circle">
@@ -218,12 +122,20 @@
                         </div>
                         <div class="media-right media-middle right">
                             <div style="width:100px" class="text-muted center">
-                                <small><span class="text-muted">در جریان</span>:<BR>
-                                    @if($ticket['Check']=="False")
-                                        <span style="color:red">دیده نشده</span></small>
-                                    @else
-                                        <span>دیده شده</span></small>
+                                <small>
+                                @if($ticket['Closed']==0)
+                                    <span class="text-muted">در جریان</span>:<BR>
+                                        @if($ticket['Check']=="False")
+                                            <span style="color:red">دیده نشده</span>
+                                        @else
+                                            <span>دیده شده</span></small>
+                                        @endif
+                                @endif
+
+                                    @if($ticket['Closed']==1)
+                                        <span class="text-danger">بسته شده</span><BR>
                                     @endif
+                                    </small>
                             </div>
 
                         </div>
@@ -252,7 +164,7 @@
 
   <!-- App JS -->
   <script src="assets/js/main.min.js"></script>
-
+<script src="assets/js/filter.js"></script>
 </body>
 
 </html>

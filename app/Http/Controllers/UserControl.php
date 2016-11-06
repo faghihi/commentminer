@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Activate;
 use App\Contact;
+use App\Service;
 use App\Subscribe;
 use App\Tickets;
 use App\User;
 use Illuminate\Http\Request;
 
 use Requests;
+use Cookie;
 use DB;
 use Session;
 use Illuminate\Support\Facades\Input;
@@ -38,15 +40,9 @@ class UserControl extends Controller
 //        $final = date("Y-m-d H:i:s",$final);
 //        echo $final."<BR>";
 //        echo $time;
-        $username=Session::get('UserName');
-        $id=User::where('UserName',$username)->first()->UserId;
-        $tickets=Tickets::where('UserId',$id)->get();
-        $check=1;
-        foreach($tickets as $ticket){
-            if($ticket['Seen']=="0")
-                $check=0;
-        }
-        echo $check;
+        $time =date('Y-m-d H:i:s');
+        echo date('Y', strtotime($time));
+
     }
     public function ContactSave(){
         $name=Input::get('name');
@@ -208,6 +204,16 @@ class UserControl extends Controller
             //echo $userinfo;
             Session::put('Login','True');
             Session::put('UserName',$input['UserName']);
+            if(Input::has('Remember'))
+            {
+                $cookie = Cookie::make('UserName',Session::get('UserName'),60*3600000);
+                $token=$this->randString(10);
+                $thisuser=User::find($userinfo->UserId);
+                $thisuser->Token=$token;
+                $thisuser->save();
+                $cookie2=Cookie::make('Token',$token,60*3600000);
+                return redirect('/Pannel')->withCookies([$cookie,$cookie2]);
+            }
             return redirect('/Pannel');
         }
         else{
@@ -248,13 +254,48 @@ class UserControl extends Controller
         Session::forget('Login');
         Session::forget('USerName');
         Session::flush();
-        return redirect('/');
+        $cookie=Cookie::make('UserName',' ',-1);
+        $cookie2=Cookie::make('Token',' ',-1);
+        return redirect('/')->withCookies([$cookie,$cookie2]);
     }
 
 
     public function GetDashboard(){
         if(Session::get('Login')=='True')
         {
+            $user=User::where('UserName',\Session::get('UserName'))->first();
+            $id=$user->UserId;
+            $tickets=Tickets::where('UserId',$id)->get();
+            $ticketvec=[];
+            $i=0;
+            $tickcheck=$tickets;
+            foreach($tickets as $ticket)
+            {
+                if($ticket['Start']==1)
+                {
+                    $ticketvec[$i]=$ticket;
+                    $ticketvec[$i]['Check']="True";
+                    $ticketvec[$i]['Closed']=$ticket['closed'];
+                    $check=1;
+                    foreach($tickcheck as $thistic){
+                        if( $ticketvec[$i]['Ticket_Id']==$thistic['Ticket_Id'] && $thistic['Seen']==0){
+                            $check=0;
+                            break;
+                        }
+                    }
+                    if($check==0)
+                    {
+                        $ticketvec[$i]['Check']="False";
+                    }
+                    else{
+                        $ticketvec[$i]['Check']="True";
+                    }
+                    $i++;
+                }
+            }
+
+            $userid=User::where('UserName',Session::get('UserName'))->first()->UserId;
+            $Services=Service::where('UserId',$userid)->get();
             $username=Session::get('UserName');
             $id=User::where('UserName',$username)->first()->UserId;
             $tickets=Tickets::where('UserId',$id)->get();
@@ -263,7 +304,7 @@ class UserControl extends Controller
                 if($ticket['Seen']=="0")
                     $check=0;
             }
-            return view('Pannel/index')->with('New',$check);
+            return view('Pannel/index')->with(['New'=>$check,'Tickets'=>$ticketvec,'Services'=>$Services]);
         }
         else {
             return redirect('/UserArea');

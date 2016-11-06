@@ -25,123 +25,11 @@
 </head>
 
 <body class="layout-container ls-top-navbar si-r3-md-up">
-
 <!-- Navbar -->
-<nav class="navbar navbar-dark bg-primary navbar-full navbar-fixed-top">
-
-  <!-- Toggle sidebar -->
-  <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
-
-  <!-- Brand -->
-  <a href="/Pannel" class="navbar-brand first-child-md">Comment miner</a>
-
-  <!-- Menu -->
-  <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
-
-    <!-- Notifications dropdown -->
-    <!--<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-caret="false" data-toggle="dropdown" role="button" aria-haspopup="false"><i class="material-icons email">mail_outline</i></a>
-        <ul class="dropdown-menu dropdown-menu-right right notifications" aria-labelledby="Preview">
-            <li class="dropdown-title">پیام&zwnj;ها</li>
-            <li class="dropdown-item email-item">
-                <a class="nav-link" href="#">
-          <span class="media">
-                <span class="media-left media-middle"><i class="material-icons">mail</i></span>
-          <span class="media-body media-middle">
-                    <small class="pull-xs-left text-muted">12:20</small>
-                    <strong>موضوع 1</strong>
-                    Enhance your website with
-                </span>
-          </span>
-                </a>
-            </li>
-            <li class="dropdown-item email-item">
-                <a class="nav-link" href="/Pannel">
-          <span class="media">
-                <span class="media-left media-middle">
-                    <i class="material-icons">mail</i>
-                </span>
-          <span class="media-body media-middle">
-                    <small class="text-muted pull-xs-left">30 min</small>
-                    <strong>موضوع 2</strong>
-                    Partnership proposal
-                </span>
-          </span>
-                </a>
-            </li>
-            <li class="dropdown-item email-item">
-                <a class="nav-link" href="/Pannel">
-          <span class="media">
-                <span class="media-left media-middle">
-                    <i class="material-icons">mail</i>
-                </span>
-          <span class="media-body media-middle">
-                    <small class="text-muted pull-xs-left">1 hr</small>
-                    <strong>موضوع 3</strong>
-                    UI Design
-                </span>
-          </span>
-                </a>
-            </li>
-            <li class="dropdown-action center">
-                <a href="email.html">مشاهده&zwnj;ی همه</a>
-            </li>
-        </ul>
-    </li>-->
-    <!-- // END Notifications dropdown -->
-
-    <!-- User dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
-        <!--<img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">-->
-        <i class="material-icons md-36">account_circle</i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-        <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
-        <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-        <a class="dropdown-item" href="/SignOut">خروج</a>
-      </div>
-    </li>
-    <!-- // END User dropdown -->
-
-  </ul>
-  <!-- // END Menu -->
-
-</nav>
+@include('Pannel/nav')
 <!-- // END Navbar -->
 <!-- Sidebar -->
-<div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
-  <ul class="sidebar-menu">
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Pannel">
-        <i class="sidebar-menu-icon material-icons">home</i> داشبورد
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Plans">
-        <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
-      </a>
-    </li>
-    <li class="sidebar-menu-item active">
-      <a class="sidebar-menu-button" href="/Services">
-        <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Tickets">
-        <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-        @if($New==0)
-          <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
-        @endif
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Profile">
-        <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
-      </a>
-    </li>
-  </ul>
-</div>
+@include('Pannel/Sidebar',array('active'=>'service'))
 <!-- // END Sidebar -->
 
   <!-- Content -->
@@ -169,37 +57,37 @@
       <div class="card">
         <div class="card-header">
           <div class="row">
-            {{--<div class="col-md-6">--}}
-              {{--<form action="#" class="form-inline">--}}
-                {{--<div class="form-group">--}}
-                  {{--<label for="#">فیلتر: </label>--}}
-                  {{--<select class="c-select form-control">--}}
-                    {{--<option selected>همه</option>--}}
-                    {{--<option value="1">فعال</option>--}}
-                    {{--<option value="2">تمام شده</option>--}}
-                  {{--</select>--}}
-                {{--</div>--}}
-              {{--</form>--}}
+            <div class="center" style="font-size: 2em;">
+              سرویس های من
             {{--</div>--}}
-            <!--<div class="col-md-6">
-              <div class="dropdown pull-md-right">
-                <a href="#" class="btn btn-primary-outline btn-rounded dropdown-toggle" data-toggle="dropdown">Action</a>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <a href="#" class="dropdown-item">Delete</a>
-                  <a href="#" class="dropdown-item">Edit</a>
-                  <a href="#" class="dropdown-item">Cancel</a>
-                </div>
+            {{--<ul class="pager">--}}
+            {{--<li disabled><a href="#">جدیدتر</a></li>--}}
+            {{--<li disabled><a href="#">قدیمی تر</a></li>--}}
+            {{--</ul>--}}
+          </div>
+            <div class="col-md-3 text-md-right">
+              <div class="form-group">
+                <label class="m-r-1">فیلتر:</label>
+                <select class="c-select">
+                  <option selected value="0">همه</option>
+                  <option value="1">فعال ها</option>
+                  <option value="2">غیر فعال ها</option>
+                </select>
               </div>
-            </div>-->
+              {{--نمایش :--}}
+              {{--<button class="btn-success btn-rounded"> فعال ها </button>--}}
+              {{--<button class="btn-danger btn-rounded">غیر فعال ها </button>--}}
+            </div>
           </div>
         </div>
         <div class="table-responsive">
           <table class="table table-bordered m-b-0">
             <thead>
             <tr>
-              <th style="width:60px;" class="center">تعداد تاثیر ها</th>
-              <th>شماره پلن</th>
+              <th class="center">شماره سرویس</th>
               <th class="center">شناسه سرویس</th>
+              <th style="width:60px;" class="center">درخواست ها</th>
+              <th>شماره پلن</th>
               <th class="center">شروع طرح</th>
               <th class="center">پایان طرح</th>
               <th class="center">وضعیت</th>
@@ -209,7 +97,14 @@
             <tbody>
             <?php $count=1; ?>
             @foreach($Services as $service)
-            <tr>
+              @if($service['IsActive']==1)
+                <?php $class='enable_one'?>
+              @else
+                <?php $class='off_one'?>
+              @endif
+            <tr class="{{$class}}">
+              <td class="center">{{$service['ServiceId']}}</td>
+              <td class="center">{{$service['Token']}}</td>
               <td class="center">{{$service['Count']}}</td>
               <td>
                 {{--<a href="#" data-toggle="modal" data-target="#myModal">--}}
@@ -219,7 +114,6 @@
                    </span>
                 </P>
               </td>
-              <td class="center">{{$service['Token']}}</td>
               <td class="center">{{$service['StartDate']}}</td>
               <td class="center">{{$service['FinishDate']}}</td>
               <td class="center">
@@ -237,34 +131,11 @@
             </tr>
               <?php $count++;?>
             @endforeach
-            {{--<tr>--}}
-              {{--<td class="center">2</td>--}}
-              {{--<td>--}}
-                {{--<a href="#" data-toggle="modal" data-target="#myModal">--}}
-                  {{--<span>سرویس شماره 2&nbsp;<small>vesta.ir</small></span>--}}
-                {{--</a>--}}
-              {{--</td>--}}
-              {{--<td class="center">34erer34</td>--}}
-              {{--<td class="center">1395/07/01</td>--}}
-              {{--<td class="center">1395/08/01</td>--}}
-              {{--<td class="center">--}}
-                {{--<span class="label label-pill label-danger">تمام&zwnj;شده</span>--}}
-              {{--</td>--}}
-              {{--<td class="center">--}}
-                {{--<a href="#" class="btn btn-white btn-xs try-sweet-successMessage"><i class="material-icons md-18">autorenew</i></a>--}}
-                {{--<a href="#" class="btn btn-success btn-xs try-sweet-update"><i class="material-icons md-18">update</i></a>--}}
-                {{--<a href="#" class="btn btn-danger btn-xs try-sweet-delete"><i class="material-icons md-18">delete</i></a>--}}
-              {{--</td>--}}
-            {{--</tr>--}}
             </tbody>
           </table>
         </div>
       </div>
       <!-- // END Table -->
-      {{--<ul class="pager">--}}
-        {{--<li disabled><a href="#">جدیدتر</a></li>--}}
-        {{--<li disabled><a href="#">قدیمی تر</a></li>--}}
-      {{--</ul>--}}
 
     </div>
   </div>

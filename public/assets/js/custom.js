@@ -3,7 +3,31 @@
  */
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
+    $( "select" )
+        .change(function () {
+            var val=0;
+            $( "select option:selected" ).each(function() {
+               val=$(this).val();
+                Filterthis(val);
+            });
+
+        });
 });
+
+function Filterthis(val) {
+    if(val==0){
+        $(".enable_one").show();
+        $(".off_one").show();
+    }
+    if(val==1){
+        $(".off_one").hide();
+        $(".enable_one").show();
+    }
+    if(val==2){
+        $(".off_one").show();
+        $(".enable_one").hide();
+    }
+}
 
 function disi() {
     $("#subi").attr('disabled',true);
@@ -76,3 +100,4 @@ function CheckOldPass() {
     }});
     return check;
 }
+

@@ -24,122 +24,11 @@
 </head>
 
 <body class="layout-container ls-top-navbar si-r3-md-up">
-
 <!-- Navbar -->
-<nav class="navbar navbar-dark bg-primary navbar-full navbar-fixed-top">
-
-    <!-- Toggle sidebar -->
-    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
-
-    <!-- Brand -->
-    <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
-
-    <!-- Menu -->
-    <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
-
-        <!-- Notifications dropdown -->
-        <!--<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-caret="false" data-toggle="dropdown" role="button" aria-haspopup="false"><i class="material-icons email">mail_outline</i></a>
-            <ul class="dropdown-menu dropdown-menu-right right notifications" aria-labelledby="Preview">
-                <li class="dropdown-title">پیام&zwnj;ها</li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="#">
-              <span class="media">
-					<span class="media-left media-middle"><i class="material-icons">mail</i></span>
-              <span class="media-body media-middle">
-						<small class="pull-xs-left text-muted">12:20</small>
-						<strong>موضوع 1</strong>
-						Enhance your website with
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="/Pannel">
-              <span class="media">
-					<span class="media-left media-middle">
-						<i class="material-icons">mail</i>
-					</span>
-              <span class="media-body media-middle">
-						<small class="text-muted pull-xs-left">30 min</small>
-						<strong>موضوع 2</strong>
-						Partnership proposal
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="/Pannel">
-              <span class="media">
-					<span class="media-left media-middle">
-						<i class="material-icons">mail</i>
-					</span>
-              <span class="media-body media-middle">
-						<small class="text-muted pull-xs-left">1 hr</small>
-						<strong>موضوع 3</strong>
-						UI Design
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-action center">
-                    <a href="email.html">مشاهده&zwnj;ی همه</a>
-                </li>
-            </ul>
-        </li>-->
-        <!-- // END Notifications dropdown -->
-
-        <!-- User dropdown -->
-        <li class="nav-item dropdown">
-            <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
-                <!--<img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">-->
-                <i class="material-icons md-36">account_circle</i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-                <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
-                <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-                <a class="dropdown-item" href="/SignOut">خروج</a>
-            </div>
-        </li>
-        <!-- // END User dropdown -->
-
-    </ul>
-    <!-- // END Menu -->
-
-</nav>
+@include('Pannel/nav')
 <!-- // END Navbar -->
 <!-- Sidebar -->
-<div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
-    <ul class="sidebar-menu">
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Pannel">
-                <i class="sidebar-menu-icon material-icons">home</i> داشبورد
-            </a>
-        </li>
-        <li class="sidebar-menu-item active">
-            <a class="sidebar-menu-button" href="/Plans">
-                <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Services">
-                <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
-            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Tickets">
-                <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-                @if($New==0)
-                    <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
-                @endif            </a>
-        </li>
-        <li class="sidebar-menu-item">
-            <a class="sidebar-menu-button" href="/Profile">
-                <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
-            </a>
-        </li>
-    </ul>
-</div>
+@include('Pannel/Sidebar',array('active'=>'price'))
 <!-- // END Sidebar -->
 
 <!-- Content -->
@@ -158,20 +47,18 @@
                 @foreach($Plans as $plan)
                     @if($i%3==0)
                         <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" >
                             @endif
-                            <div class="plan best_value">
+                            <div class="plan best_value table-hover">
                                 <div class="header">
                                     <div class="title"> {{$plan['Name']}} </div>
-                                    <BR>
-                                    <div class="price">
-                                        <h3>{{$plan['Price']}} تومان</h3>
-                                        <small>{{$plan['Desc']}}</small> </div>
+                                    <small>{{$plan['Desc']}}</small>
                                 </div>
                                 <div class="features-list">
-                                    <ul class="features">
-                                        <li>تعداد درخواست ها :  {{$plan['MaxCount']}}</li>
-                                        <li>{{$plan['Period']/30}}ماه</li>
+                                    <ul class="features ">
+                                        <li class="feature-info">
+                                            {{$plan['MaxCount']}} درخواست مجاز
+                                        </li>
                                         <?php
                                             $count=0;
                                             if(isset($plan['Fi'])){
@@ -179,7 +66,7 @@
                                             {
                                                 $count++;
                                                 ?>
-                                             <li>{{$feature}}</li>
+                                             <li><i class="material-icons md-24" id="tik">check</i> {{$feature}}</li>
                                             <?php
                                                 }
                                             }
@@ -189,10 +76,31 @@
                                             <?php
                                                 }
                                             ?>
+                                        <li>
+                                            <div class="price">
+                                                <?php
+                                                    $price=$plan['Price'];
+                                                    if($price >= 1000){
+                                                        $price=$price/1000;
+                                                        $brand="هزار";
+                                                    }
+                                                    else {
+                                                        $brand="";
+                                                    }
+                                                ?>
+                                                @if($price!=0)
+                                                        <h3>{{$price}} {{$brand}} تومان</h3>
+                                                    @else
+                                                        <h3>رایگان</h3>
+                                                    @endif
+                                                    <br>
+                                                <h5><span>به مدت {{$plan['Period']/30}}</span> ماه</h5>
 
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
-                                <footer><a href="/bankmessage?plan={{$plan['PlanId']}}" class="btn btn-primary btn-lg">خرید</a></footer>
+                                <footer><a href="/bankmessage?plan={{$plan['PlanId']}}" class="btn btn-rounded btn-success btn-lg">خرید</a></footer>
                             </div>
                             @if($i%3==2)
                                 </div>

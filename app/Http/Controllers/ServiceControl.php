@@ -7,6 +7,7 @@ use App\Service;
 use App\User;
 use Illuminate\Http\Request;
 use Mail;
+use Morilog\Jalali\Facades\jDateTime;
 use Requests;
 use App\Tickets;
 use App\PlanMethod;
@@ -24,6 +25,26 @@ class ServiceControl extends Controller
         $plancode=$_GET['plan'];
         $plan=Plan::where('PlanId',$plancode)->first();
         $cost = $plan->Price;
+        if($cost==0){
+            $service=new Service();
+            $user=User::where('UserName',Session::get('UserName'))->first();
+            $service->UserId=$user->UserId;
+            $service->PlanId=$plancode;
+            $service->StartDate=date('Y-m-d H:i:s');
+            $months=Plan::where('PlanId',$plancode)->first()->Period/30;
+            $final = strtotime(date("Y-m-d H:i:s", strtotime($service->StartDate)) . " +$months month");
+            $final = date("Y-m-d H:i:s",$final);
+            $service->FinishDate=$final;
+            $service->Count=0;
+            $service->IsActive=1;
+            $service->Token=$this->randString(16);
+            $service->save();
+            $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' به صورت آزمایشی و رایگان ایجاد شد');
+            $this->html_email($data,'mail_theme',"خرید سرویس رایگان");
+            $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' به صورت آزمایشی و رایگان ایجاد شد');
+            $this->user_email($data,'mail_theme',"خرید سرویس رایگان");
+            return redirect('/Services');
+        }
         // Merchant Code has to change
         $MerchantID = '260906cc-2ed3-11e6-93b9-005056a205be';  //Required
         $Amount = $cost; //Amount will be based on Toman  - Required
@@ -95,6 +116,10 @@ class ServiceControl extends Controller
                 $service->IsActive=1;
                 $service->Token=$this->randString(16);
                 $service->save();
+                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
+                $this->html_email($data,'mail_theme',"خرید سرویس");
+                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' خریداری شد');
+                $this->user_email($data,'mail_theme',"خرید سرویس");
                 // Emailing the content should be here
                 // $this->sendmail(Session::get('payname'),$courseinfo->name,"$courseinfo->date"." $courseinfo->time",Session::get('payemail'));
 
@@ -114,19 +139,22 @@ class ServiceControl extends Controller
         }
     }
 
-    public function SendMail($pname, $cname, $time, $email)
-    {
-        $info['pname'] = $pname;
-        $info['cname'] = $cname;
-        $info['time'] = $time;
-        $info['email'] = $email;
-        mail::send('test', array('login' => '0', 'pathtoimage' => public_path() . "/img/logo.png", 'info' => $info), function ($message) use ($info) {
-            $message->from('h.faghihi15@gmail.com', 'وستا کمپ امیرکبیر');
-            $message->to($info['email'], $info['pname'])->subject('بلیط خریداری شده از وستا کمپ');
+    public function html_email($data,$page,$subject){
+        $Email='h.faghihi15@gmail.com';
+        Mail::send($page, $data, function($message) use ($Email,$subject) {
+            $message->to($Email, 'کامنت ماینر')->subject
+            ($subject);
+            $message->from('h.faghihi15@gmail.com','کامنت ماینر');
         });
-        return 1;
     }
-
+    public function user_email($data,$page,$subject){
+        $Email=Session::get('UserName');
+        Mail::send($page, $data, function($message) use ($Email,$subject) {
+            $message->to($Email, 'کامنت ماینر')->subject
+            ($subject);
+            $message->from('h.faghihi15@gmail.com','کامنت ماینر');
+        });
+    }
     public function ChangeInfo(){
         // retrevieng ID
         // Updating
@@ -136,6 +164,10 @@ class ServiceControl extends Controller
         $item=Service::find($code);
         $item->Token=$valid;
         $item->save();
+        $data=array('Content'=>'سرویس به شماره ی ' .$item->ServiceId.' به روز رسانی شد');
+        $this->html_email($data,'mail_theme',"تغییر شناسه سرویس");
+        $data=array('Content'=>'سرویس به شماره ی ' .$item->ServiceId.' به روز رسانی شد');
+        $this->user_email($data,'mail_theme',"تغییر شناسه سرویس");
         return redirect('/Services');
     }
     public function randString($length, $charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
@@ -199,6 +231,10 @@ class ServiceControl extends Controller
         }
         $userid=User::where('UserName',Session::get('UserName'))->first()->UserId;
         $Services=Service::where('UserId',$userid)->get();
+        foreach ($Services as $service){
+            $service['StartDate']=jDateTime::strftime('Y-m-d H:i:s', strtotime($service['StartDate']));
+            $service['FinishDate']=jDateTime::strftime('Y-m-d H:i:s', strtotime($service['FinishDate']));
+        }
        //Redirecting to Main Page
 //        print_r($Services);
         $username=Session::get('UserName');
@@ -221,6 +257,9 @@ class ServiceControl extends Controller
         $service=Service::find($code);
         $plan=Plan::find($service->PlanId);
         $cost=$plan->Price;
+        if($cost==0){
+            return redirect('/RenewError');
+        }
         $plan=$plan->PlanId;
         $service=$code;
         // here must be a Case for the Cost
@@ -287,6 +326,7 @@ class ServiceControl extends Controller
                 $code=Session::get('Plan');
                 Session::forget('Plan');
                 $service=Service::find($service_code);
+                $servicenew=new Service();
                 $months=Plan::where('PlanId',$code)->first()->Period/30;
                 $today=date("Y-m-d H:i:s");
                 if($today>$service->FinishDate)
@@ -295,10 +335,18 @@ class ServiceControl extends Controller
                     $selectdate=$service->FinishDate;
                 $final = strtotime(date("Y-m-d H:i:s", strtotime($selectdate)) . " +$months month");
                 $final = date("Y-m-d H:i:s",$final);
-                $service->FinishDate=$final;
-                $service->IsActive=1;
-                $service->Token=$this->randString(16);
-                $service->save();
+                $servicenew->UserId=$service->UserId;
+                $servicenew->PlanId=$service->PlanId;
+                $servicenew->Count=0;
+                $servicenew->FinishDate=$final;
+                $servicenew->StartDate=$selectdate;
+                $servicenew->IsActive=0;
+                $servicenew->Token=$service->Token;
+                $servicenew->save();
+                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' تمدید شد که شماره ی سرویس جدید '.$servicenew->ServiceId.' می باشد .');
+                $this->html_email($data,'mail_theme',"تمدید سرویس");
+                $data=array('Content'=>'سرویس به شماره ی ' .$service->ServiceId.' تمدید شد که شماره ی سرویس جدید '.$servicenew->ServiceId.' می باشد .');
+                $this->user_email($data,'mail_theme',"تمدید سرویس");
                 // Emailing the content should be here
                 // $this->sendmail(Session::get('payname'),$courseinfo->name,"$courseinfo->date"." $courseinfo->time",Session::get('payemail'));
 

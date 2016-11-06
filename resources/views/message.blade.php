@@ -24,68 +24,8 @@
 
 <body class="layout-container ls-top-navbar si-r3-md-up">
 
-<!-- Navbar -->
-<nav class="navbar navbar-dark bg-primary navbar-full navbar-fixed-top">
-
-  <!-- Toggle sidebar -->
-  <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
-
-  <!-- Brand -->
-  <a href="/Pannel"  class="navbar-brand first-child-md">Comment miner</a>
-
-  <!-- Menu -->
-  <ul class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
-
-    <!-- User dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
-        <!--<img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">-->
-        <i class="material-icons md-36">account_circle</i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-        <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
-        <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-        <a class="dropdown-item" href="/SingOut">خروج</a>
-      </div>
-    </li>
-    <!-- // END User dropdown -->
-
-  </ul>
-  <!-- // END Menu -->
-
-</nav>
-<!-- // END Navbar -->
-<!-- Sidebar -->
-<div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
-  <ul class="sidebar-menu">
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Pannel">
-        <i class="sidebar-menu-icon material-icons">home</i> داشبورد
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Plans">
-        <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Services">
-        <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Tickets">
-        <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-      </a>
-    </li>
-    <li class="sidebar-menu-item">
-      <a class="sidebar-menu-button" href="/Profile">
-        <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
-      </a>
-    </li>
-  </ul>
-</div>
-<!-- // END Sidebar -->
+@include('Pannel/nav')
+@include('Pannel/Sidebar')
 
   <!-- Content -->
   <div class="layout-content" data-scrollable>
@@ -105,7 +45,7 @@
                     <p>{{$Content}}</p>
                       <a href="/Pannel" class="btn btn-white">
                         <i class="material-icons">home</i>
-                        <span class="icon-text">بازگشت به صفحه ی اصلی</span>
+                        <span class="icon-text"> صفحه ی اصلی</span>
                       </a>
                   </div>
                 </div>
@@ -136,7 +76,7 @@
                       <p>{{$Content}}</p>
                       <a href="/Pannel" class="btn btn-white">
                         <i class="material-icons">home</i>
-                        <span class="icon-text">بازگشت به صفحه ی اصلی</span>
+                        <span class="icon-text">صفحه ی اصلی</span>
                       </a>
                     </div>
                   </div>

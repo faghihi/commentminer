@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Input;
 use Request;
 use Session;
 use DB;
+use Mail;
+use Morilog\Jalali\Facades\jDateTime;
 class AdminControl extends Controller
 {
     //
@@ -54,6 +56,7 @@ class AdminControl extends Controller
             if($ticket['Start']==1 && $ticket['closed']==0)
             {
                 $ticketvec[$i]=$ticket;
+                $ticketvec[$i]['Date']=jDateTime::strftime('Y-m-d H:i:s', strtotime($ticket->Date)); // 1395-02-15
                 $userinfo=User::find($ticket->UserId);
                 $ticketvec[$i]['UserInfo']=$userinfo;
                 $ticketvec[$i]['Check']="True";
@@ -105,6 +108,8 @@ class AdminControl extends Controller
         $tickets=Tickets::where('Ticket_Id',$code)->get();
         foreach ($tickets as $thisone){
             $username=User::find($thisone->UserId)->UserName;
+            $ticketss['Date']=jDateTime::strftime('Y-m-d H:i:s', strtotime($thisone['Date']));
+
         }
         $this->Readed($code);
 
@@ -135,8 +140,12 @@ class AdminControl extends Controller
         $ticket->Ticket_Id=$oticket->Ticket_Id;
         $ticket->Sender_Type=true;
         $ticket->UserId=$oticket->UserId;
+        $username=User::find($oticket->UserId)->UserName;
 //        echo $oticket->UserId;
         $ticket->save();
+        $data=array('Content'=>'شما برای تیکت با شماره ی  ' .$code.' یک حواب دریافت کرده اید .');
+        $this->user_email($data,$username,'mail_theme',"تیکت شما پاسخ داده شد ");
+
         return redirect('/AdminTicketView?ticket='.$code);
     }
     public function Close(){
@@ -144,6 +153,17 @@ class AdminControl extends Controller
         DB::table('Tickets')
             ->where('Ticket_Id', $code)
             ->update(['Closed' => true]);
+        $oticket=Tickets::where('Ticket_Id',$code)->first();
+        $username=User::find($oticket->UserId)->UserName;
+        $data=array('Content'=>'همه ی تیکت های با شماره شناسایی ' .$code.' بسته  شد');
+        $this->user_email($data,$username,'mail_theme',"بسته شدن تیکت");
         return redirect('/AdminPannel');
+    }
+    public function user_email($data,$Email,$page,$subject){
+        Mail::send($page, $data, function($message) use ($Email,$subject) {
+            $message->to($Email, 'کامنت ماینر')->subject
+            ($subject);
+            $message->from('h.faghihi15@gmail.com','کامنت ماینر');
+        });
     }
 }

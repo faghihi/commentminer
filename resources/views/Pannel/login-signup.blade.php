@@ -38,10 +38,15 @@
               </div>
               <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
               <div class="form-group">
-                <input type="password" name="Password" class="form-control" placeholder="رمز عبور">
-                <a href="/ForgotPass" class="pull-xs-left">
+                <input type="password"name="Password" class="form-control" placeholder="رمز عبور">
+                <a href="#" class="pull-xs-left">
                   <small>فراموش کردید؟</small>
                 </a>
+                <div class="checkbox">
+                  <label>
+                    <small>مرا به خاطر بسپار</small><input type="checkbox" name="Remember">
+                  </label>
+                </div>
                 <div class="clearfix"></div>
               </div>
               <div class="center">

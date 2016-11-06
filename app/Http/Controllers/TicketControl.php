@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Tickets;
 use App\User;
 use Illuminate\Http\Request;
+use Morilog\Jalali\Facades\jDate;
+use Morilog\Jalali\Facades\jDateTime;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use DB;
+use Mail;
 
 class TicketControl extends Controller
 {
@@ -53,6 +56,10 @@ class TicketControl extends Controller
         $ticket->Start=true;
         $ticket->Closed=false;
         $ticket->save();
+        $data=array('Content'=>'تیکت به شماره ی ' .$ticket->Ticket_Id.' ایجاد شد');
+        $this->html_email($data,'mail_theme',"ایجاد تیکت");
+        $data=array('Content'=>'شما یک تیکت به شماره ی ' .$ticket->Ticket_Id.' ایجاد کردید');
+        $this->user_email($data,'mail_theme',"ایجاد تیکت");
 //        echo $ldate;
 //        echo $id;
 //        echo $code;
@@ -84,10 +91,31 @@ class TicketControl extends Controller
         $ticket->UserId=$oticket->UserId;
 //        echo $oticket->UserId;
         $ticket->save();
+        $data=array('Content'=>'تیکت به شماره ی ' .$ticket->Ticket_Id.' به روز رسانی شد');
+        $this->html_email($data,'mail_theme',"به روز رسانی تیکت");
+        $data=array('Content'=>'جواب شما به تیکت به شماره ی ' .$ticket->Ticket_Id.' دریافت  شد و به زودی به آن پاسخ خواخیم داد');
+        $this->user_email($data,'mail_theme',"به روز رسانی تیکت");
         return redirect('/TicketView?ticket='.$code);
         // add the answer and owner of answer
         // add a badge on the original question
         // redirect to admin or user profile
+    }
+    public function gregorian_to_jalali($gy,$gm,$gd,$mod=''){
+        $g_d_m=array(0,31,59,90,120,151,181,212,243,273,304,334);
+        $jy=($gy<=1600)?0:979;
+        $gy-=($gy<=1600)?621:1600;
+        $gy2=($gm>2)?($gy+1):$gy;
+        $days=(365*$gy) +((int)(($gy2+3)/4)) -((int)(($gy2+99)/100))
+            +((int)(($gy2+399)/400)) -80 +$gd +$g_d_m[$gm-1];
+        $jy+=33*((int)($days/12053));
+        $days%=12053;
+        $jy+=4*((int)($days/1461));
+        $days%=1461;
+        $jy+=(int)(($days-1)/365);
+        if($days > 365)$days=($days-1)%365;
+        $jm=($days < 186)?1+(int)($days/31):7+(int)(($days-186)/30);
+        $jd=1+(($days < 186)?($days%31):(($days-186)%30));
+        return($mod=='')?array($jy,$jm,$jd):$jy.$mod.$jm.$mod.$jd;
     }
     public function Retrieve(){
         if(Session::get('Login')!="True")
@@ -106,11 +134,13 @@ class TicketControl extends Controller
         $tickcheck=$tickets;
         foreach($tickets as $ticket)
         {
-            if($ticket['Start']==1 && $ticket['closed']==0)
+//            if($ticket['Start']==1 && $ticket['closed']==0)
+            if($ticket['Start']==1)
             {
-//                echo "shuru<br>".$ticket['Ticket_Id']."<br>";
                 $ticketvec[$i]=$ticket;
                 $ticketvec[$i]['Check']="True";
+                $ticketvec[$i]['Closed']=$ticket['closed'];
+                $ticketvec[$i]['Date']=jDateTime::strftime('Y-m-d H:i:s', strtotime($ticket->Date)); // 1395-02-19
                 $check=1;
                 foreach($tickcheck as $thistic){
 //                    print_r($thistic);
@@ -167,13 +197,22 @@ class TicketControl extends Controller
         foreach($tickets as $ticket){
             if($ticket['Seen']=="0")
                 $check=0;
+            if($ticket['Closed']==0)
+                $close=1;
+            else
+                $close=0;
         }
         $code=$_GET['ticket'];
         $tickets=Tickets::where('Ticket_Id',$code)->get();
+        foreach($tickets as $ticketss)
+        {
+
+            $ticketss['Date']=jDateTime::strftime('Y-m-d H:i:s', strtotime($ticketss['Date']));
+        }
         $this->Readed($code);
 
         //echo $code;
-        return view('Pannel/view-ticket')->with(['Tickets'=>$tickets,'UserName'=>\Session::get('UserName'),'Code'=>$code,'New'=>$check]);
+        return view('Pannel/view-ticket')->with(['Tickets'=>$tickets,'UserName'=>\Session::get('UserName'),'Code'=>$code,'New'=>$check,'Close'=>$close]);
     }
     public function Readed($code)
     {
@@ -189,7 +228,27 @@ class TicketControl extends Controller
         DB::table('Tickets')
             ->where('Ticket_Id', $code)
             ->update(['Closed' => true]);
+        $data=array('Content'=>'همه ی تیکت های با شماره شناسایی ' .$code.' بسته  شد');
+        $this->html_email($data,'mail_theme',"بسته شدن تیکت");
+        $data=array('Content'=>'همه ی تیکت های با شماره شناسایی ' .$code.' بسته  شد');
+        $this->user_email($data,'mail_theme',"بسته شدن تیکت");
         return redirect('/Tickets');
+    }
+    public function html_email($data,$page,$subject){
+        $Email='h.faghihi15@gmail.com';
+        Mail::send($page, $data, function($message) use ($Email,$subject) {
+            $message->to($Email, 'کامنت ماینر')->subject
+            ($subject);
+            $message->from('h.faghihi15@gmail.com','کامنت ماینر');
+        });
+    }
+    public function user_email($data,$page,$subject){
+        $Email=Session::get('UserName');
+        Mail::send($page, $data, function($message) use ($Email,$subject) {
+            $message->to($Email, 'کامنت ماینر')->subject
+            ($subject);
+            $message->from('h.faghihi15@gmail.com','کامنت ماینر');
+        });
     }
 
 }

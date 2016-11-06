@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'LoginProof'=>\App\Http\Middleware\LoginProof::class,
+        'Loginnotproof'=>\App\Http\Middleware\Loginnotproof::class,
         'uservalid'=>\App\Http\Middleware\AuthCheck::class,
     ];
 }

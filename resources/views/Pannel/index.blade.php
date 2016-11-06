@@ -21,126 +21,18 @@
   <!-- Bootstrap rtl -->
   <link rel="stylesheet" href="assets/vendor/bootstrap-rtl-3.3.4/dist/css/bootstrap-rtl.min.css">
 
+    <!-- Charts CSS -->
+    <link rel="stylesheet" href="examples/css/morris.min.css">
+
 </head>
 
 <body class="layout-container ls-top-navbar si-r3-md-up">
 
   <!-- Navbar -->
-  <nav class="navbar navbar-dark bg-primary navbar-full navbar-fixed-top">
-
-    <!-- Toggle sidebar -->
-    <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="sidebar" data-target="#sidebarRight"><span class="material-icons">menu</span></button>
-
-    <!-- Brand -->
-    <a href="/Pannel"  class="navbar-brand first-child-md">کامنت ماینر</a>
-
-    <!-- Menu -->
-    <ul style="float: left" class="nav navbar-nav pull-xs-right hidden-sm-down nav-strip-right">
-
-        <!-- Notifications dropdown -->
-        <!--<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-caret="false" data-toggle="dropdown" role="button" aria-haspopup="false"><i class="material-icons email">mail_outline</i></a>
-            <ul class="dropdown-menu dropdown-menu-right right notifications" aria-labelledby="Preview">
-                <li class="dropdown-title">پیام&zwnj;ها</li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="#">
-              <span class="media">
-					<span class="media-left media-middle"><i class="material-icons">mail</i></span>
-              <span class="media-body media-middle">
-						<small class="pull-xs-left text-muted">12:20</small>
-						<strong>موضوع 1</strong>
-						Enhance your website with
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="/Pannel">
-              <span class="media">
-					<span class="media-left media-middle">
-						<i class="material-icons">mail</i>
-					</span>
-              <span class="media-body media-middle">
-						<small class="text-muted pull-xs-left">30 min</small>
-						<strong>موضوع 2</strong>
-						Partnership proposal
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-item email-item">
-                    <a class="nav-link" href="/Pannel">
-              <span class="media">
-					<span class="media-left media-middle">
-						<i class="material-icons">mail</i>
-					</span>
-              <span class="media-body media-middle">
-						<small class="text-muted pull-xs-left">1 hr</small>
-						<strong>موضوع 3</strong>
-						UI Design
-					</span>
-              </span>
-                    </a>
-                </li>
-                <li class="dropdown-action center">
-                    <a href="email.html">مشاهده&zwnj;ی همه</a>
-                </li>
-            </ul>
-        </li>-->
-        <!-- // END Notifications dropdown -->
-
-        <!-- User dropdown -->
-        <li class="nav-item dropdown" >
-            <a class="nav-link active dropdown-toggle p-a-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false">
-                <!--<img src="assets/images/people/50/guy-6.jpg" alt="Avatar" class="img-circle" width="40">-->
-                <i class="material-icons md-36">account_circle</i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right right dropdown-menu-list" aria-labelledby="Preview">
-                <a class="dropdown-item" href="/Profile"><i class="material-icons md-18">lock</i>&nbsp;<span class="icon-text">ویرایش پروفایل</span></a>
-                <!--<a class="dropdown-item" href="#"><i class="material-icons md-18">person</i>&nbsp;<span class="icon-text">پروفایل</span></a>-->
-                <a class="dropdown-item" href="/SignOut">خروج</a>
-            </div>
-        </li>
-        <!-- // END User dropdown -->
-
-    </ul>
-    <!-- // END Menu -->
-
-</nav>
+        @include('Pannel/nav')
   <!-- // END Navbar -->
   <!-- Sidebar -->
-  <div class="sidebar sidebar-right si-si-3 sidebar-visible-md-up sidebar-light ls-top-navbar-xs-up sidebar-transparent-md" id="sidebarRight" data-scrollable>
-      <ul class="sidebar-menu">
-          <li class="sidebar-menu-item active">
-              <a class="sidebar-menu-button" href="/Pannel">
-                  <i class="sidebar-menu-icon material-icons">home</i> داشبورد
-              </a>
-          </li>
-          <li class="sidebar-menu-item">
-              <a class="sidebar-menu-button" href="/Plans">
-                  <i class="sidebar-menu-icon material-icons">credit_card</i>خرید سرویس&zwnj;ها
-              </a>
-          </li>
-          <li class="sidebar-menu-item">
-              <a class="sidebar-menu-button" href="/Services">
-                  <i class="sidebar-menu-icon material-icons">receipt</i>  سرویس&zwnj;های من
-              </a>
-          </li>
-          <li class="sidebar-menu-item">
-              <a class="sidebar-menu-button" href="/Tickets">
-                  <i class="sidebar-menu-icon material-icons">assignment</i> تیکت
-                  @if($New==0)
-                    <span class="sidebar-menu-label tooltip-right label label-primary">جدید</span>
-                  @endif
-              </a>
-          </li>
-          <li class="sidebar-menu-item">
-              <a class="sidebar-menu-button" href="/Profile">
-                  <i class="sidebar-menu-icon material-icons">create</i> ویرایش پروفایل
-              </a>
-          </li>
-      </ul>
-  </div>
+  @include('Pannel/Sidebar',array('active'=>'dashboard'))
   <!-- // END Sidebar -->
 
   <!-- Content -->
@@ -155,13 +47,144 @@
       <h1 class="center">داشبورد</h1>
         <div class="card">
             <div class="card-block">
-                <h4 class="card-title">کامنت ماینر</h4>
-                <p>
-                    به کامنت ماینر خوش آمدید
-                </p>
+                <div class="center">
+                    <h1 class="card-title">کامنت ماینر</h1>
+                    <p>
+                        به کامنت ماینر خوش آمدید
+                    </p>
+                </div>
+
                 <hr>
             </div>
+            <div class="card-block">
+                <?php
+                $count_open=0;
+                $count_close=0;
+                foreach($Tickets as $ticket_one){
+                    if($ticket_one['Closed']==0)
+                        $count_open++;
+                    else
+                        $count_close++;
+                }
+                ?>
+                <div class="row m-b-1">
+                    <div class="col-md-6">
+                        <div class="card card-stats-primary">
+                            <div class="card-block">
+                                <div class="media">
+                                    <div class="media-left media-middle">
+                                        <i class="material-icons text-primary md-36">query_builder</i>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <h4 class="card-title m-b-0">
+                                            <strong class="text-primary">{{$count_open}}</strong> تیکت های فعال
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card card-stats-success">
+                            <div class="card-block">
+                                <div class="media">
+                                    <div class="media-left media-middle">
+                                        <i class="material-icons text-success md-36">done_all</i>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <h4 class="card-title m-b-0">
+                                            <strong class="text-success">{{$count_close}}</strong> تیکت های بسته شده
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{--here come the service Status --}}
+                    <?php
+                    $count_enable=0;
+                    $count_off=0;
+                    foreach($Services as $service){
+                        if($service['IsActive']==1)
+                            $count_enable++;
+                        else
+                            $count_off++;
+                    }
+                    ?>
+                    <div class="row m-b-1">
+                        <div class="col-md-6">
+                            <div class="card card-stats-success">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-left media-middle">
+                                            <i class="material-icons text-success md-36">work</i>
+                                        </div>
+                                        <div class="media-body media-middle">
+                                            <h4 class="card-title m-b-0">
+                                                <strong class="text-success">{{$count_enable}}</strong>    سرویس در حال استفاده
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card card-stats-danger">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-left media-middle">
+                                            <i class="material-icons text-danger md-36">clear</i>
+                                        </div>
+                                        <div class="media-body media-middle">
+                                            <h4 class="card-title m-b-0">
+                                                <strong class="text-danger">{{$count_off}}</strong>  سرویس غیر فعال
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </div>
+        <!-- Stats -->
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="card-title">آمار</h4>
+                    </div>
+                </div>
+                <div id="stats" style="height:180px;"></div>
+            </div>
+        </div>
+        <!-- // END Stats -->
+        <div class="card-group">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">سرویس های جدید</h3>
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                    </div>
+                    <div id="stats" style="height:300px;"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">بخش پشتیبانی</h3>
+                </div>
+                <div class="card-block">
+                    <div class="row">
+
+                    </div>
+                    <div id="stats" style="height:180px;"></div>
+                </div>
+            </div>
+        </div>
+
 
     </div>
   </div>
@@ -171,6 +194,7 @@
 
   <!-- Bootstrap -->
   <script src="assets/vendor/tether.min.js"></script>
+
   <script src="assets/vendor/bootstrap-rtl-3.3.4/dist/js/bootstrap.min.js"></script>
   <!--<script src="assets/vendor/bootstrap.min.js"></script>-->
 
@@ -183,6 +207,13 @@
   <!-- Theme Colors -->
   <script src="assets/js/colors.js"></script>
 
+
+  <!-- Charts JS -->
+  <script src="assets/vendor/raphael.min.js"></script>
+  <script src="assets/vendor/morris.min.js"></script>
+
+  <!-- Initialize Charts -->
+  <script src="examples/js/chart.js"></script>
 
 </body>
 

@@ -1,0 +1,7 @@
+<html>
+<body>
+<p>
+    {{$Content}}
+</p>
+</body>
+</html>

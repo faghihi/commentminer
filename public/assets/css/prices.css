@@ -1,28 +1,53 @@
 
 /* plans and pricing */
 .plans{text-align:center;}
-.plans .plan { text-align:center; width:25%; display:inline-block; margin:0 2%; box-shadow:0 0 0 2px #e0e0e0 inset;}
+.plans .plan:hover{
+	background-color:#27ae60;
+}
+.plans .plan {
+	text-align:center; width:25%; display:inline-block; margin:0 2%; box-shadow:0 0 0 2px #e0e0e0 inset;
+	background-color:#f5f3f3;
+	border-radius: 1em;
+	min-width: 250px;
+}
 .plans .plan:hover{box-shadow:0 0 0 2px #ccc inset;}
 .plan .header{margin:30px 0;}
 .best-value .header{margin:40px 0;}
-.plan .header .title{font-size:18px;}
+.plan .header .title{font-size:2.5em;}
 .plan .header .price h3{margin:0 0 10px; font-weight:500; font-size:25px;}
 .plans .features-list .features{margin:0; padding:0;}
-.plans .features-list .features li{display:block; list-style:none; padding:15px; border-bottom:1px solid #efefef;}
+.plans .features-list .features li{display:block; list-style:none; padding:15px; height: 50px;}
+.plans .features-list .features li.feature-info{display:block; list-style:none; padding:15px;border-bottom:1px solid black; }
 .plans .plan:hover .features-list .features li{border-color:#ccc;}
-.plans .features-list .features li:first-child{border-top:1px solid #efefef;}
+.plans .plan:hover .features-list .features li:hover{background-color:#33bb6d;}
+.plans .features-list .features li:first-child{
+	background-color: #27ae60;
+	color: white;
+	border-top: 1px solid black;;
+}
+.plans .features-list .features li:last-child{
+	border-bottom:1px solid black;
+	border-top:1px solid black;
+	margin: 0;
+	background: Black;
+	color: white;
+	height:130px;
+}
+#tik{
+	color: darkgreen;
+}
 .plans footer{padding:30px;}
 .best-value footer{padding:40px 30px;}
-.plans footer .btn{text-transform:none;}
+.plans footer .btn{text-transform:none; width:70%; background-color: transparent;
+	color: Black;
+	border-color: Black;
+}
 .plans .features-list li i{color:#de2525;}
 .free-trial{margin:40px auto 0;}
 
-@media (max-width:990px){
-	.plans .plan{width:32%; margin:0 0.5%;}
-}
-@media (max-width:750px){
+/*@media (max-width:990px){*/
+	/*.plans .plan{width:32%; margin:0 0.5%;}*/
+/*}*/
+@media (max-width:1120px){
 		.plans .plan{width:90%; max-width:400px; margin:0 auto 40px;}
-}
-@media (max-width:450px){
-	.plans .features-list{display:none;}
 }
